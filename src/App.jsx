@@ -3,9 +3,12 @@ import getUsers from './services/getUsers';
 
 function App() {
 	const [first, setfirst] = useState();
-	useEffect(() => {
-		const users = getUsers();
+	const x = async () => {
+		const users = await getUsers();
 		setfirst(users);
+	};
+	useEffect(() => {
+		x();
 	}, []);
 
 	return (
