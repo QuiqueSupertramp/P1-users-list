@@ -1,0 +1,21 @@
+:root {
+	--color-white: #fff;
+	--color-black: #000;
+	--color-blue: #a0ebff;
+	--color-purple: #dbceff;
+	--color-red: #ce3131;
+	--color-green: #13b176;
+	--color-gray: #454545;
+	--color-lightgray: #cfcfcf;
+
+	--shadow-sm: 0 0 8px rgba(69, 69, 69, 0.3);
+	--shadow-md: 0 0 12px rgba(69, 69, 69, 0.5);
+
+	--rounded-sm: 0.5rem;
+	--rounded-md: 1rem;
+
+	--title1: 2rem;
+	--title2: 1.5rem;
+	--title3: 1.25rem;
+	--text-sm: 0.875rem;
+}
