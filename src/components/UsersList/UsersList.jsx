@@ -20,7 +20,7 @@ const UsersList = () => {
             setSortBy={setSortBy}
             filters={filters}
          />
-         <UsersTable users={usersFiltered} status={users.status} />
+         <UsersTable users={usersFiltered} status={users?.status} />
       </section>
    );
 };
