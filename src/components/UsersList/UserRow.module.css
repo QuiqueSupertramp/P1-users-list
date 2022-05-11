@@ -1,0 +1,147 @@
+.userRow {
+   width: 100%;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+   padding: 0.75rem 1.5rem;
+   box-shadow: var(--shadow-sm);
+   border-radius: var(--rounded-md);
+   background-color: var(--color-white);
+}
+
+.display {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   padding: 0px;
+}
+
+.displayName {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   padding: 0px;
+}
+
+.displayName p {
+   line-height: 2rem;
+}
+
+.displayName span {
+   line-height: 1.25rem;
+   color: var(--color-gray);
+}
+
+.info {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   padding: 0px;
+}
+
+/* STATUS */
+
+.status {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   padding: 10px;
+}
+
+.active,
+.inactive {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   padding: 0px;
+   gap: 0.5rem;
+}
+
+.active {
+   color: var(--color-green);
+}
+
+.inactive {
+   color: var(--color-red);
+}
+
+.active span,
+.inactive span {
+   font-size: var(--text-sm);
+}
+
+.active svg,
+.inactive svg {
+   width: 1rem;
+   height: 1rem;
+}
+
+/* ROL */
+
+.rol {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   padding: 0.625rem;
+}
+
+.rolContainer {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   padding: 0.25rem 0.5rem;
+   font-size: var(--text-sm);
+   border-radius: var(--rounded-sm);
+   text-transform: uppercase;
+}
+
+.profesor {
+   background-color: var(--color-blue);
+}
+
+.alumno {
+   background-color: var(--color-purple);
+}
+
+.otro {
+   background-color: var(--color-lightgray);
+}
+
+/* ICONS */
+
+.icons {
+   display: flex;
+   flex-direction: row;
+   align-items: flex-start;
+   padding: 0px;
+}
+
+.edit,
+.trash {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   padding: 12px;
+}
+
+.edit svg,
+.trash svg {
+   width: 1.25rem;
+   height: 1.25rem;
+}
+
+.edit svg {
+   color: var(--color-black);
+}
+
+.trash svg {
+   color: var(--color-red);
+}

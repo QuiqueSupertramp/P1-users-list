@@ -1,3 +1,22 @@
 @import './reset.css';
 @import './theme.css';
 @import './fonts.css';
+
+* {
+   margin: 0;
+}
+
+body {
+   width: 750px;
+   margin: 0 auto;
+}
+
+input,
+select {
+   border: none;
+   outline: none;
+}
+
+h1 {
+   margin: 2rem 0;
+}

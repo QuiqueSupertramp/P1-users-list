@@ -1,8 +1,25 @@
-[
-	{
-		"Username": "XXX",
-		"Nombre": "xxx xxx xxx",
-		"Rol": "xxxxx",
-		"Activo": false
-	}
-]
+{
+   "usuarios": [
+      {
+         "id": 1,
+         "username": "sofi01",
+         "nombre": "Sofía Olivares Conesa",
+         "rol": "Alumno",
+         "activo": false
+      },
+      {
+         "id": 2,
+         "username": "eliana02",
+         "nombre": "Eliana Carrera Reyes",
+         "rol": "Otro",
+         "activo": false
+      },
+      {
+         "id": 3,
+         "username": "mario03",
+         "nombre": "Mario Calzada Muro",
+         "rol": "Profesor",
+         "activo": true
+      }
+   ]
+}

@@ -1,0 +1,48 @@
+.filtersOne,
+.filtersTwo {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+   padding: 0.75rem 0rem;
+}
+
+.inputSearch,
+.select,
+.btnNewUser {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   gap: 0.625rem;
+   padding: 0.5rem 1rem;
+   background: var(--color-white);
+   box-shadow: var(--shadow-sm);
+   border-radius: var(--rounded-sm);
+}
+
+.inputSearch input::placeholder {
+   color: var(--color-lightgray);
+}
+
+.inputSearch svg {
+   width: 1rem;
+   height: 1rem;
+   color: var(--color-lightgray);
+}
+
+.checkbox {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   gap: 0.75rem;
+   padding: 0rem;
+}
+
+.btnNewUser {
+   justify-content: center;
+   border: none;
+   background: var(--color-black);
+   color: var(--color-white);
+   line-height: 2rem;
+}
