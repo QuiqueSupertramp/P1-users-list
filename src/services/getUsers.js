@@ -1,7 +1,7 @@
 import { URL_API } from '@/lib/constants/api';
 
 const FETCH_ERROR = {
-   users: [],
+   usersList: [],
    status: {
       ok: false,
       loading: false,
@@ -16,7 +16,7 @@ const getUsers = async () => {
 
       const data = await res.json();
       return {
-         users: data,
+         usersList: data,
          status: { ok: true, loading: false, errorMessage: '' },
       };
    } catch (error) {

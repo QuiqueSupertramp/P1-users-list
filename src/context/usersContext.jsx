@@ -4,7 +4,7 @@ import { createContext, useState, useEffect } from 'react';
 const UsersContext = createContext();
 
 const initialUsers = {
-   users: [],
+   usersList: [],
    status: {
       ok: true,
       loading: true,

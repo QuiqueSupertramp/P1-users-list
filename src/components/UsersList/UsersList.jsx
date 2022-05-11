@@ -10,7 +10,7 @@ const UsersList = () => {
    const { filters, setSearchValue, setOnlyActiveUsers, setSortBy } =
       useFilters();
 
-   const usersFiltered = filterUsers(users?.users, filters) || [];
+   const usersFiltered = filterUsers(users?.usersList, filters) || [];
 
    return (
       <section>

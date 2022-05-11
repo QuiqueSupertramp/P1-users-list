@@ -7,7 +7,7 @@ const ROLES = {
 };
 
 const Rol = ({ rol }) => {
-   const { rolName, rolClass } = ROLES[rol];
+   const [rolName, rolClass] = ROLES[rol];
 
    return (
       <div className={style.rol}>
