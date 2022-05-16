@@ -1,17 +1,24 @@
 import { useState } from 'react';
 
-const useFilters = () => {
+const useFilters = setCurrentPage => {
    const [filters, setFilters] = useState({
       searchValue: '',
       onlyActiveUsers: false,
       sortBy: 'defecto',
    });
 
-   const setSearchValue = searchValue =>
+   const setSearchValue = searchValue => {
       setFilters({ ...filters, searchValue });
-   const setOnlyActiveUsers = onlyActiveUsers =>
+      setCurrentPage(1);
+   };
+   const setOnlyActiveUsers = onlyActiveUsers => {
       setFilters({ ...filters, onlyActiveUsers });
-   const setSortBy = sortBy => setFilters({ ...filters, sortBy });
+      setCurrentPage(1);
+   };
+   const setSortBy = sortBy => {
+      setFilters({ ...filters, sortBy });
+      setCurrentPage(1);
+   };
 
    return { filters, setSearchValue, setOnlyActiveUsers, setSortBy };
 };

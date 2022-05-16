@@ -5,7 +5,7 @@ function App() {
    return (
       <>
          <UsersProvider>
-            <h1>Practica 1</h1>
+            <h1>Lista de usuarios</h1>
             <main>
                <UsersList />
             </main>

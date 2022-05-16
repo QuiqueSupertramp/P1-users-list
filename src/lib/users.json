@@ -20,6 +20,76 @@
          "nombre": "Mario Calzada Muro",
          "rol": "Profesor",
          "activo": true
+      },
+      {
+         "id": 4,
+         "username": "alberto04",
+         "nombre": "Alberto Martínez Almeida",
+         "rol": "Alumno",
+         "activo": false
+      },
+      {
+         "id": 5,
+         "username": "adrian05",
+         "nombre": "Adrián Piñero Bahía",
+         "rol": "Alumno",
+         "activo": true
+      },
+      {
+         "id": 6,
+         "username": "alvaro06",
+         "nombre": "Álvaro Gómez Canela",
+         "rol": "Otro",
+         "activo": false
+      },
+      {
+         "id": 7,
+         "username": "eric07",
+         "nombre": "Eric Sánchez Raya",
+         "rol": "Alumno",
+         "activo": false
+      },
+      {
+         "id": 8,
+         "username": "alex08",
+         "nombre": "Álex Arrabal García",
+         "rol": "Alumno",
+         "activo": true
+      },
+      {
+         "id": 9,
+         "username": "Laura09",
+         "nombre": "Laura García Naharro",
+         "rol": "Profesor",
+         "activo": false
+      },
+      {
+         "id": 10,
+         "username": "sara10",
+         "nombre": "Sara Puentes Alegre",
+         "rol": "Alumno",
+         "activo": true
+      },
+      {
+         "id": 11,
+         "username": "alex08",
+         "nombre": "Álex Arrabal García",
+         "rol": "Alumno",
+         "activo": true
+      },
+      {
+         "id": 12,
+         "username": "Laura09",
+         "nombre": "Laura García Naharro",
+         "rol": "Profesor",
+         "activo": false
+      },
+      {
+         "id": 13,
+         "username": "sara10",
+         "nombre": "Sara Puentes Alegre",
+         "rol": "Alumno",
+         "activo": true
       }
    ]
 }

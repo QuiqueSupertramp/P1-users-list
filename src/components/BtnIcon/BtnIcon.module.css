@@ -1,0 +1,19 @@
+.btn {
+   width: 2.5rem;
+   height: 2.5rem;
+   border-radius: 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background: var(--color-black);
+}
+
+.btn:disabled {
+   background-color: var(--color-lightgray);
+}
+
+.icon {
+   color: white;
+   width: 1.25rem;
+   height: 1.25rem;
+}

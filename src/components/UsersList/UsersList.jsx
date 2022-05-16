@@ -1,26 +1,44 @@
 import UsersContext from '@/context/usersContext';
 import useFilters from '@/hooks/useFilters';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
+import Pagination from '../Pagination/Pagination';
 import UsersFilters from '../UsersFilters/UsersFilters';
 import UsersTable from './UsersTable';
+import style from './UsersList.module.css';
 
 const UsersList = () => {
-   const { users } = useContext(UsersContext);
+   const { users, status } = useContext(UsersContext);
+   const [currentPage, setCurrentPage] = useState(1);
+   const [steps, setSteps] = useState(6);
 
    const { filters, setSearchValue, setOnlyActiveUsers, setSortBy } =
-      useFilters();
+      useFilters(setCurrentPage);
 
-   const usersFiltered = filterUsers(users?.usersList, filters) || [];
+   const usersFiltered = filterUsers(users, filters) || [];
+
+   const totalPages = Math.ceil(usersFiltered.length / steps);
+
+   const paginatedUsers =
+      paginateUsers(usersFiltered, currentPage, steps) || [];
 
    return (
-      <section>
+      <section className={style.usersList}>
          <UsersFilters
             setSearchValue={setSearchValue}
             setActiveFilter={setOnlyActiveUsers}
             setSortBy={setSortBy}
             filters={filters}
          />
-         <UsersTable users={usersFiltered} status={users?.status} />
+         <UsersTable users={paginatedUsers} status={status} />
+         {usersFiltered?.length >= 1 && (
+            <Pagination
+               totalPages={totalPages}
+               currentPage={currentPage}
+               setCurrentPage={setCurrentPage}
+               steps={steps}
+               setSteps={setSteps}
+            />
+         )}
       </section>
    );
 };
@@ -48,21 +66,19 @@ const filterUsersByActive = (users, onlyActiveUsers) => {
 const sortUsers = (users, sortBy) => {
    switch (sortBy) {
       case 'rol':
-         return users.sort(a => {
+         return users.sort((a, b) => {
+            if (a.rol === b.rol) return 0;
             if (a.rol === 'Profesor') return -1;
-            if (a.rol === 'Alumno') return 1;
-            return 0;
-         });
-
-      case 'activos':
-         return users.sort(a => {
-            if (a.activo === true) return -1;
+            if (a.rol === 'Alumno' && b.rol === 'Otro') return -1;
             return 1;
          });
 
+      case 'activos':
+         return users.sort(a => (a.activo === true ? -1 : 1));
+
       case 'alfabeticamente': {
          return users.sort((a, b) => {
-            if (a.nombre < b.nombre) return -1;
+            if (normalizeName(a.nombre) < normalizeName(b.nombre)) return -1;
             return 1;
          });
       }
@@ -71,6 +87,12 @@ const sortUsers = (users, sortBy) => {
          return users;
    }
 };
+
+const paginateUsers = (usersFiltered, currentPage, steps) =>
+   usersFiltered.slice(
+      Number(currentPage - 1) * Number(steps),
+      Number(currentPage - 1) * Number(steps) + Number(steps)
+   );
 
 const filterUsers = (users, filters) => {
    if (!users) return [];

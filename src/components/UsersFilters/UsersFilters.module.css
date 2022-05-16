@@ -1,3 +1,7 @@
+.filters {
+   width: 100%;
+}
+
 .filtersOne,
 .filtersTwo {
    display: flex;
@@ -9,15 +13,45 @@
 
 .inputSearch,
 .select,
+.checkbox,
 .btnNewUser {
    display: flex;
    flex-direction: row;
    align-items: center;
-   gap: 0.625rem;
+   gap: 0.75rem;
    padding: 0.5rem 1rem;
    background: var(--color-white);
    box-shadow: var(--shadow-sm);
    border-radius: var(--rounded-sm);
+   height: 2.5rem;
+}
+
+.inputSearch:focus-within {
+   box-shadow: var(--shadow-md);
+}
+
+.checkbox {
+   height: 2rem;
+   width: 2rem;
+   padding: 0;
+   justify-content: center;
+   position: relative;
+}
+.checkbox svg {
+   width: 1.5rem;
+   height: 1.5rem;
+}
+.checkbox input {
+   position: absolute;
+   top: 0;
+   opacity: 0;
+   height: 100%;
+   width: 100%;
+   border-radius: var(--rounded-sm);
+}
+
+.checkbox:active {
+   box-shadow: var(--shadow-md);
 }
 
 .inputSearch input::placeholder {
@@ -30,7 +64,7 @@
    color: var(--color-lightgray);
 }
 
-.checkbox {
+.active {
    display: flex;
    flex-direction: row;
    justify-content: center;

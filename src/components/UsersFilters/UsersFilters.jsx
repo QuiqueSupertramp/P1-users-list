@@ -1,3 +1,4 @@
+import Check from '../icons/Check';
 import SearchIcon from '../icons/SearchIcon';
 import style from './UsersFilters.module.css';
 
@@ -32,12 +33,15 @@ const UsersFilters = ({
             </div>
          </div>
          <div className={style.filtersTwo}>
-            <div className={style.checkbox}>
-               <input
-                  type='checkbox'
-                  checked={onlyActiveUsers}
-                  onChange={() => setActiveFilter(!onlyActiveUsers)}
-               />
+            <div className={style.active}>
+               <div className={style.checkbox}>
+                  {onlyActiveUsers ? <Check /> : null}
+                  <input
+                     type='checkbox'
+                     checked={onlyActiveUsers}
+                     onChange={() => setActiveFilter(!onlyActiveUsers)}
+                  />
+               </div>
                <label htmlFor=''>Mostrar sólo activos</label>
             </div>
             <button className={style.btnNewUser}>Añadir Usuario</button>

@@ -1,4 +1,4 @@
-const SearchIcon = props => (
+const PrevArrow = props => (
    <svg
       fill='none'
       stroke='currentColor'
@@ -9,7 +9,8 @@ const SearchIcon = props => (
          strokeLinecap='round'
          strokeLinejoin='round'
          strokeWidth='2'
-         d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'></path>
+         d='M15 19l-7-7 7-7'></path>
    </svg>
 );
-export default SearchIcon;
+
+export default PrevArrow;

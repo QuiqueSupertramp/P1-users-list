@@ -1,7 +1,7 @@
 import { URL_API } from '@/lib/constants/api';
 
 const FETCH_ERROR = {
-   usersList: undefined,
+   users: undefined,
    status: {
       isOk: false,
       errorMessage: 'Error al cargar usuarios',
@@ -15,10 +15,11 @@ const getUsers = async signal => {
 
       const data = await res.json();
       return {
-         usersList: data,
+         users: data,
          status: { isOk: true, errorMessage: '' },
       };
    } catch (error) {
+      if (error.name === 'AbortError') return;
       return FETCH_ERROR;
    }
 };
