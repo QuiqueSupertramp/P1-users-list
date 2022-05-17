@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 const initialUsers = {
    users: undefined,
    status: {
-      isOk: true,
       isLoading: true,
       errorMessage: '',
    },
@@ -17,7 +16,7 @@ const useUsers = (filters, pagination) => {
    const setUsers = users =>
       setUsersData({
          users,
-         status: { isOk: true, isLoading: false, errorMessage: '' },
+         status: { isLoading: false, errorMessage: '' },
       });
 
    const setStatus = status => {
@@ -25,7 +24,6 @@ const useUsers = (filters, pagination) => {
          users: undefined,
          status: {
             isLoading: false,
-            isOk: status.isOk,
             errorMessage: status.errorMessage,
          },
       });

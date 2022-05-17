@@ -1,36 +1,39 @@
 import { useState } from 'react';
 
 const useFilters = () => {
-   const [filters, setFilters] = useState({
+   const [filterParams, setFilterParams] = useState({
       searchValue: '',
       onlyActiveUsers: false,
       sortBy: 'defecto',
-   });
-
-   const [pagination, setPagination] = useState({
       currentPage: 1,
       steps: 6,
    });
 
    // Pagination Setters
    const setCurrentPage = currentPage =>
-      setPagination({ ...pagination, currentPage });
-   const setSteps = steps => setPagination({ ...pagination, steps });
+      setFilterParams({ ...filterParams, currentPage });
+   const setSteps = steps => setFilterParams({ ...filterParams, steps });
 
    // Filters Setters
    const setSearchValue = searchValue => {
-      setFilters({ ...filters, searchValue });
-      setCurrentPage(1);
+      setFilterParams({ ...filterParams, searchValue, currentPage: 1 });
    };
    const setOnlyActiveUsers = onlyActiveUsers => {
-      setFilters({ ...filters, onlyActiveUsers });
-      setCurrentPage(1);
+      setFilterParams({ ...filterParams, onlyActiveUsers, currentPage: 1 });
    };
    const setSortBy = sortBy => {
-      setFilters({ ...filters, sortBy });
-      setCurrentPage(1);
+      setFilterParams({ ...filterParams, sortBy, currentPage: 1 });
    };
 
+   const filters = {
+      searchValue: filterParams.searchValue,
+      onlyActiveUsers: filterParams.onlyActiveUsers,
+      sortBy: filterParams.sortBy,
+   };
+   const pagination = {
+      currentPage: filterParams.currentPage,
+      steps: filterParams.steps,
+   };
    const paginationSetters = { setCurrentPage, setSteps };
    const filtersSetters = { setSearchValue, setOnlyActiveUsers, setSortBy };
 
