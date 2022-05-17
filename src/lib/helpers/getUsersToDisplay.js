@@ -33,8 +33,9 @@ const sortUsers = (users, sortBy) => {
 
       case 'alfabeticamente': {
          return users.sort((a, b) => {
+            if (normalizeName(a.nombre) > normalizeName(b.nombre)) return 1;
             if (normalizeName(a.nombre) < normalizeName(b.nombre)) return -1;
-            return 1;
+            return 0;
          });
       }
 
