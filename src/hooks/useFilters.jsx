@@ -1,12 +1,23 @@
 import { useState } from 'react';
 
-const useFilters = setCurrentPage => {
+const useFilters = () => {
    const [filters, setFilters] = useState({
       searchValue: '',
       onlyActiveUsers: false,
       sortBy: 'defecto',
    });
 
+   const [pagination, setPagination] = useState({
+      currentPage: 1,
+      steps: 6,
+   });
+
+   // Pagination Setters
+   const setCurrentPage = currentPage =>
+      setPagination({ ...pagination, currentPage });
+   const setSteps = steps => setPagination({ ...pagination, steps });
+
+   // Filters Setters
    const setSearchValue = searchValue => {
       setFilters({ ...filters, searchValue });
       setCurrentPage(1);
@@ -20,7 +31,15 @@ const useFilters = setCurrentPage => {
       setCurrentPage(1);
    };
 
-   return { filters, setSearchValue, setOnlyActiveUsers, setSortBy };
+   const paginationSetters = { setCurrentPage, setSteps };
+   const filtersSetters = { setSearchValue, setOnlyActiveUsers, setSortBy };
+
+   return {
+      filters,
+      pagination,
+      filtersSetters,
+      paginationSetters,
+   };
 };
 
 export default useFilters;

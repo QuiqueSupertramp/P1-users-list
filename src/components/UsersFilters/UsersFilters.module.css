@@ -2,8 +2,8 @@
    width: 100%;
 }
 
-.filtersOne,
-.filtersTwo {
+.filtersRowOne,
+.filtersRowTwo {
    display: flex;
    flex-direction: row;
    justify-content: space-between;

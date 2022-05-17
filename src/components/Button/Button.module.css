@@ -1,0 +1,33 @@
+.btn {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 0 1rem;
+   box-shadow: var(--shadow-sm);
+   border: 1px solid var(--color-black);
+   border-radius: var(--rounded-sm);
+   height: 2.5rem;
+   cursor: pointer;
+}
+
+.btn:active,
+.btn:focus {
+   box-shadow: var(--shadow-md);
+}
+
+.btn:disabled {
+   background-color: var(--color-white);
+   color: var(--color-lightgray);
+   border: 1px solid var(--color-white);
+   cursor: not-allowed;
+}
+
+.filled {
+   background-color: var(--color-black);
+   color: var(--color-white);
+}
+
+.normal {
+   background-color: var(--color-white);
+   color: var(--color-black);
+}

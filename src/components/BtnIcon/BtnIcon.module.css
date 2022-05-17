@@ -5,11 +5,25 @@
    display: flex;
    justify-content: center;
    align-items: center;
+   color: var(--color-white);
+   cursor: pointer;
+}
+
+.filled {
    background: var(--color-black);
 }
 
-.btn:disabled {
+.filled:disabled {
    background-color: var(--color-lightgray);
+   cursor: not-allowed;
+}
+
+.normal {
+   background-color: none;
+}
+
+.normal:disabled {
+   color: var(--color-lightgray);
 }
 
 .icon {

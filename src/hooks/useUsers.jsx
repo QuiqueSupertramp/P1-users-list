@@ -1,3 +1,4 @@
+import { getUsersToDisplay } from '@/lib/helpers/getUsersToDisplay';
 import getUsers from '@/services/getUsers';
 import { useState, useEffect } from 'react';
 
@@ -10,7 +11,7 @@ const initialUsers = {
    },
 };
 
-const useUsers = () => {
+const useUsers = (filters, pagination) => {
    const [usersData, setUsersData] = useState(initialUsers);
 
    const setUsers = users =>
@@ -33,17 +34,23 @@ const useUsers = () => {
    useEffect(() => {
       const controller = new AbortController();
       const signal = controller.signal;
-      getUsersList(setUsers, setStatus, signal);
+      fetchUsersData(setUsers, setStatus, signal);
       return () => controller.abort();
    }, []);
 
-   return { usersData };
+   const { users, totalPages } = getUsersToDisplay(
+      usersData.users,
+      filters,
+      pagination
+   );
+
+   return { users, status: usersData.status, totalPages };
 };
 
-const getUsersList = async (setUsers, setStatus, signal) => {
+// Fetch users from API ------------------->
+const fetchUsersData = async (setUsers, setStatus, signal) => {
    const usersData = await getUsers(signal);
    if (usersData === undefined) return;
-
    const { users, status } = usersData;
    !status.isOk ? setStatus(status) : setUsers(users);
 };

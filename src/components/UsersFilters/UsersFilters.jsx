@@ -1,17 +1,15 @@
+import Button from '../Button/Button';
 import Check from '../icons/Check';
 import SearchIcon from '../icons/SearchIcon';
 import style from './UsersFilters.module.css';
 
-const UsersFilters = ({
-   setSearchValue,
-   setActiveFilter,
-   setSortBy,
-   filters,
-}) => {
+const UsersFilters = ({ filters, filtersSetters }) => {
    const { searchValue, onlyActiveUsers, sortBy } = filters;
+   const { setSearchValue, setOnlyActiveUsers, setSortBy } = filtersSetters;
+
    return (
       <header className={style.filters}>
-         <div className={style.filtersOne}>
+         <div className={style.filtersRowOne}>
             <div className={style.inputSearch}>
                <SearchIcon />
                <input
@@ -32,19 +30,19 @@ const UsersFilters = ({
                </select>
             </div>
          </div>
-         <div className={style.filtersTwo}>
+         <div className={style.filtersRowTwo}>
             <div className={style.active}>
                <div className={style.checkbox}>
                   {onlyActiveUsers ? <Check /> : null}
                   <input
                      type='checkbox'
                      checked={onlyActiveUsers}
-                     onChange={() => setActiveFilter(!onlyActiveUsers)}
+                     onChange={() => setOnlyActiveUsers(!onlyActiveUsers)}
                   />
                </div>
-               <label htmlFor=''>Mostrar sólo activos</label>
+               <label>Mostrar sólo activos</label>
             </div>
-            <button className={style.btnNewUser}>Añadir Usuario</button>
+            <Button text='Añadir usuario' />
          </div>
       </header>
    );

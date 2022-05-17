@@ -3,13 +3,10 @@ import NextArrow from '../icons/NextArrow';
 import PrevArrow from '../icons/PrevArrow';
 import style from './Pagination.module.css';
 
-const Pagination = ({
-   totalPages,
-   currentPage,
-   setCurrentPage,
-   steps,
-   setSteps,
-}) => {
+const Pagination = ({ totalPages, pagination, paginationSetters }) => {
+   const { currentPage, steps } = pagination;
+   const { setCurrentPage, setSteps } = paginationSetters;
+
    return (
       <footer className={style.footer}>
          <div className={style.steps}>
