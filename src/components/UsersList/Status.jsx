@@ -4,13 +4,13 @@ import CrossCircle from '../icons/CrossCircle';
 
 const Status = ({ isActive }) => {
    const activeClass = isActive === true ? style.active : style.inactive;
-   const activeIcon = isActive === true ? <CheckCircle /> : <CrossCircle />;
+   const IsActiveIcon = isActive === true ? CheckCircle : CrossCircle;
    const activeText = isActive === true ? 'Activo' : 'Inactivo';
 
    return (
       <div className={style.status}>
          <div className={activeClass}>
-            {activeIcon}
+            <IsActiveIcon />
             <span>{activeText}</span>
          </div>
       </div>

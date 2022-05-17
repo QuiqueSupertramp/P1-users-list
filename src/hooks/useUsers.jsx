@@ -19,12 +19,12 @@ const useUsers = (filters, pagination) => {
          status: { isLoading: false, errorMessage: '' },
       });
 
-   const setStatus = status => {
+   const setStatus = errorMessage => {
       setUsersData({
-         users: undefined,
+         users: [],
          status: {
             isLoading: false,
-            errorMessage: status.errorMessage,
+            errorMessage,
          },
       });
    };
@@ -50,7 +50,7 @@ const fetchUsersData = async (setUsers, setStatus, signal) => {
    const usersData = await getUsers(signal);
    if (usersData === undefined) return;
    const { users, status } = usersData;
-   !status.isOk ? setStatus(status) : setUsers(users);
+   !status.isOk ? setStatus(status.errorMessage) : setUsers(users);
 };
 
 export default useUsers;
