@@ -1,3 +1,4 @@
+import { SELECT_OPTIONS } from '@/lib/constants/selectOptions';
 import Button from '../Button/Button';
 import Check from '../icons/Check';
 import SearchIcon from '../icons/SearchIcon';
@@ -21,11 +22,13 @@ const UsersFilters = ({ filters, filtersSetters }) => {
             </div>
             <div className={style.select}>
                <select value={sortBy} onChange={e => setSortBy(e.target.value)}>
-                  <option value='defecto'>Por defecto</option>
-                  <option value='rol'>Por rol</option>
-                  <option value='alfabeticamente'>Por orden alfabético</option>
+                  <option value={SELECT_OPTIONS.DEFAULT}>Por defecto</option>
+                  <option value={SELECT_OPTIONS.ROLE}>Por rol</option>
+                  <option value={SELECT_OPTIONS.NAME}>
+                     Por orden alfabético
+                  </option>
                   {!onlyActiveUsers && (
-                     <option value='activos'>Por activos</option>
+                     <option value={SELECT_OPTIONS.ACTIVE}>Por activos</option>
                   )}
                </select>
             </div>
@@ -36,11 +39,12 @@ const UsersFilters = ({ filters, filtersSetters }) => {
                   {onlyActiveUsers ? <Check /> : null}
                   <input
                      type='checkbox'
+                     id='actives'
                      checked={onlyActiveUsers}
                      onChange={() => setOnlyActiveUsers(!onlyActiveUsers)}
                   />
                </div>
-               <label>Mostrar sólo activos</label>
+               <label htmlFor='actives'>Mostrar sólo activos</label>
             </div>
             <Button text='Añadir usuario' />
          </div>

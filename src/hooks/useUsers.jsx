@@ -12,6 +12,7 @@ const initialUsers = {
 
 const useUsers = (filters, pagination) => {
    const [usersData, setUsersData] = useState(initialUsers);
+   console.log('usersData.status', usersData.status);
 
    const setUsers = users =>
       setUsersData({
@@ -21,7 +22,7 @@ const useUsers = (filters, pagination) => {
 
    const setStatus = errorMessage => {
       setUsersData({
-         users: [],
+         users: undefined,
          status: {
             isLoading: false,
             errorMessage,
@@ -47,9 +48,8 @@ const useUsers = (filters, pagination) => {
 
 // Fetch users from API ------------------->
 const fetchUsersData = async (setUsers, setStatus, signal) => {
-   const usersData = await getUsers(signal);
-   if (usersData === undefined) return;
-   const { users, status } = usersData;
+   const { users, status } = await getUsers(signal);
+   if (status.aborted) return setStatus('Petición abortada');
    !status.isOk ? setStatus(status.errorMessage) : setUsers(users);
 };
 

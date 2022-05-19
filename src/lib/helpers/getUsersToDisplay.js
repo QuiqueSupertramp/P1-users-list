@@ -1,3 +1,6 @@
+import { ROLES } from '../constants/roles';
+import { SELECT_OPTIONS } from '../constants/selectOptions';
+
 // Filter Functions ------------------------>
 const normalizeName = string =>
    string
@@ -9,32 +12,32 @@ const filterUsersBySearch = (users, searchValue) => {
    if (searchValue.lenght === 0) return users;
 
    return users.filter(user =>
-      normalizeName(user.nombre).includes(normalizeName(searchValue))
+      normalizeName(user.name).includes(normalizeName(searchValue))
    );
 };
 
 const filterUsersByActive = (users, onlyActiveUsers) => {
    if (!onlyActiveUsers) return users;
-   return users.filter(user => user.activo === true);
+   return users.filter(user => user.active === true);
 };
 
 const sortUsers = (users, sortBy) => {
    switch (sortBy) {
-      case 'rol':
+      case SELECT_OPTIONS.ROLE:
          return users.sort((a, b) => {
-            if (a.rol === b.rol) return 0;
-            if (a.rol === 'Profesor') return -1;
-            if (a.rol === 'Alumno' && b.rol === 'Otro') return -1;
+            if (a.role === b.role) return 0;
+            if (a.role === ROLES.PROFESOR) return -1;
+            if (a.role === ROLES.ALUMNO && b.role === ROLES.OTRO) return -1;
             return 1;
          });
 
-      case 'activos':
-         return users.sort(a => (a.activo === true ? -1 : 1));
+      case SELECT_OPTIONS.ACTIVE:
+         return users.sort(a => (a.active === true ? -1 : 1));
 
-      case 'alfabeticamente': {
+      case SELECT_OPTIONS.NAME: {
          return users.sort((a, b) => {
-            if (normalizeName(a.nombre) > normalizeName(b.nombre)) return 1;
-            if (normalizeName(a.nombre) < normalizeName(b.nombre)) return -1;
+            if (normalizeName(a.name) > normalizeName(b.name)) return 1;
+            if (normalizeName(a.name) < normalizeName(b.name)) return -1;
             return 0;
          });
       }

@@ -46,9 +46,12 @@
 }
 
 .status,
-.rol,
+.rol {
+   width: 35%;
+}
+
 .icons {
-   width: 33%;
+   width: 25%;
 }
 
 /* STATUS */

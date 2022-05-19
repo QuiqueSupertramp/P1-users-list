@@ -13,8 +13,7 @@
 
 .inputSearch,
 .select,
-.checkbox,
-.btnNewUser {
+.checkbox {
    display: flex;
    flex-direction: row;
    align-items: center;
@@ -26,8 +25,20 @@
    height: 2.5rem;
 }
 
-.inputSearch:focus-within {
+.inputSearch:focus-within,
+.select:focus-within,
+.checkbox:focus-within {
    box-shadow: var(--shadow-md);
+}
+
+.inputSearch input::placeholder {
+   color: var(--color-lightgray);
+}
+
+.inputSearch svg {
+   width: 1rem;
+   height: 1rem;
+   color: var(--color-lightgray);
 }
 
 .checkbox {
@@ -54,16 +65,6 @@
    box-shadow: var(--shadow-md);
 }
 
-.inputSearch input::placeholder {
-   color: var(--color-lightgray);
-}
-
-.inputSearch svg {
-   width: 1rem;
-   height: 1rem;
-   color: var(--color-lightgray);
-}
-
 .active {
    display: flex;
    flex-direction: row;
@@ -71,12 +72,4 @@
    align-items: center;
    gap: 0.75rem;
    padding: 0rem;
-}
-
-.btnNewUser {
-   justify-content: center;
-   border: none;
-   background: var(--color-black);
-   color: var(--color-white);
-   line-height: 2rem;
 }

@@ -28,6 +28,10 @@
    padding-right: 0.75rem;
 }
 
+.select:focus-within {
+   box-shadow: var(--shadow-md);
+}
+
 .pagination {
    display: flex;
    justify-content: center;

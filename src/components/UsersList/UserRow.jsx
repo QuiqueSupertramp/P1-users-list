@@ -4,15 +4,15 @@ import Rol from './Rol';
 import Status from './Status';
 import style from './UserRow.module.css';
 
-const UserRow = ({ nombre, username, rol, activo }) => {
+const UserRow = ({ name, username, role, active }) => {
    return (
       <li className={style.userRow}>
          <div className={style.display}>
-            <DisplayName nombre={nombre} username={username} />
+            <DisplayName name={name} username={username} />
          </div>
          <div className={style.info}>
-            <Status isActive={activo} />
-            <Rol rol={rol} />
+            <Status isActive={active} />
+            <Rol role={role} />
             <Icons />
          </div>
       </li>

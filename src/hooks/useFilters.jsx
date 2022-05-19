@@ -12,7 +12,8 @@ const useFilters = () => {
    // Pagination Setters
    const setCurrentPage = currentPage =>
       setFilterParams({ ...filterParams, currentPage });
-   const setSteps = steps => setFilterParams({ ...filterParams, steps });
+   const setSteps = steps =>
+      setFilterParams({ ...filterParams, steps, currentPage: 1 });
 
    // Filters Setters
    const setSearchValue = searchValue => {

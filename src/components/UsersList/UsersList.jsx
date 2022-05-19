@@ -8,15 +8,12 @@ import useUsers from '@/hooks/useUsers';
 const UsersList = () => {
    const { filters, pagination, filtersSetters, paginationSetters } =
       useFilters();
-
    const { users, status, totalPages } = useUsers(filters, pagination);
 
    return (
       <section className={style.usersList}>
          <UsersFilters filters={filters} filtersSetters={filtersSetters} />
-
          <UsersTable users={users} status={status} />
-
          {users?.length >= 1 && (
             <Pagination
                totalPages={totalPages}

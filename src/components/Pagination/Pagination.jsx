@@ -4,6 +4,7 @@ import PrevArrow from '../icons/PrevArrow';
 import style from './Pagination.module.css';
 
 const Pagination = ({ totalPages, pagination, paginationSetters }) => {
+   // Destructuring props
    const { currentPage, steps } = pagination;
    const { setCurrentPage, setSteps } = paginationSetters;
 
@@ -11,12 +12,7 @@ const Pagination = ({ totalPages, pagination, paginationSetters }) => {
       <footer className={style.footer}>
          <div className={style.steps}>
             <div className={style.select}>
-               <select
-                  value={steps}
-                  onChange={e => {
-                     setCurrentPage(1);
-                     setSteps(e.target.value);
-                  }}>
+               <select value={steps} onChange={e => setSteps(e.target.value)}>
                   <option value={4}>4</option>
                   <option value={6}>6</option>
                   <option value={8}>8</option>

@@ -19,7 +19,16 @@ const getUsers = async signal => {
          status: { isOk: true, errorMessage: '' },
       };
    } catch (error) {
-      if (error.name === 'AbortError') return;
+      if (error.name === 'AbortError')
+         return {
+            users: undefined,
+            status: {
+               isOk: false,
+               errorMessage: 'Petición abortada',
+               aborted: true,
+            },
+         };
+
       return FETCH_ERROR;
    }
 };

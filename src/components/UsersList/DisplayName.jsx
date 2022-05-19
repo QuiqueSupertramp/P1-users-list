@@ -1,9 +1,9 @@
 import style from './UserRow.module.css';
 
-const DisplayName = ({ nombre, username }) => {
+const DisplayName = ({ name, username }) => {
    return (
       <div className={style.displayName}>
-         <p>{nombre}</p>
+         <p>{name}</p>
          <span>@{username}</span>
       </div>
    );

@@ -1,13 +1,14 @@
+import { ROLES } from '@/lib/constants/roles';
 import style from './UserRow.module.css';
 
-const ROLES = {
-   Profesor: ['Profesor', style.profesor],
-   Alumno: ['Alumno', style.alumno],
-   Otro: ['Otro', style.otro],
+const ROLES_LIST = {
+   teacher: [ROLES.PROFESOR, style.profesor],
+   student: [ROLES.ALUMNO, style.alumno],
+   other: [ROLES.OTRO, style.otro],
 };
 
-const Rol = ({ rol }) => {
-   const [rolName, rolClass] = ROLES[rol];
+const Rol = ({ role }) => {
+   const [rolName, rolClass] = ROLES_LIST[role];
 
    return (
       <div className={style.rol}>
