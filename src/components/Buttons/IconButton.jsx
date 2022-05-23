@@ -1,6 +1,6 @@
-import style from './BtnIcon.module.css';
+import style from './IconButton.module.css';
 
-const BtnIcon = ({ Icon, filled = true, ...props }) => {
+const IconButton = ({ Icon, filled = true, ...props }) => {
    const isFilled = filled ? style.filled : style.normal;
    return (
       <button {...props} className={`${style.btn} ${isFilled}`}>
@@ -9,4 +9,4 @@ const BtnIcon = ({ Icon, filled = true, ...props }) => {
    );
 };
 
-export default BtnIcon;
+export default IconButton;

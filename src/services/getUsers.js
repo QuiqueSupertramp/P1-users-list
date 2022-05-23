@@ -8,6 +8,15 @@ const FETCH_ERROR = {
    },
 };
 
+const ABORT_ERROR = {
+   users: undefined,
+   status: {
+      isOk: false,
+      errorMessage: 'Petición abortada',
+      aborted: true,
+   },
+};
+
 const getUsers = async signal => {
    try {
       const res = await fetch(URL_API, { signal });
@@ -19,16 +28,7 @@ const getUsers = async signal => {
          status: { isOk: true, errorMessage: '' },
       };
    } catch (error) {
-      if (error.name === 'AbortError')
-         return {
-            users: undefined,
-            status: {
-               isOk: false,
-               errorMessage: 'Petición abortada',
-               aborted: true,
-            },
-         };
-
+      if (error.name === 'AbortError') return ABORT_ERROR;
       return FETCH_ERROR;
    }
 };

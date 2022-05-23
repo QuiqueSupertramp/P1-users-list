@@ -1,0 +1,28 @@
+.wrapper {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   gap: 0.5rem;
+   padding: 0.5rem 1rem;
+   box-shadow: var(--shadow-sm);
+   border-radius: var(--rounded-sm);
+   height: 2.5rem;
+}
+
+.wrapper:focus-within {
+   box-shadow: var(--shadow-md);
+}
+
+.wrapper input::placeholder {
+   color: var(--color-lightgray);
+}
+
+.icon {
+   width: 1rem;
+   height: 1rem;
+   color: var(--color-lightgray);
+}
+
+.inputSearch {
+   width: 100%;
+}

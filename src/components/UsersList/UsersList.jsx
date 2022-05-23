@@ -4,6 +4,7 @@ import UsersFilters from '../UsersFilters/UsersFilters';
 import UsersTable from './UsersTable';
 import style from './UsersList.module.css';
 import useUsers from '@/hooks/useUsers';
+import Button from '../Buttons/Button';
 
 const UsersList = () => {
    const { filters, pagination, filtersSetters, paginationSetters } =
@@ -12,7 +13,11 @@ const UsersList = () => {
 
    return (
       <section className={style.usersList}>
-         <UsersFilters filters={filters} filtersSetters={filtersSetters} />
+         <UsersFilters
+            filters={filters}
+            filtersSetters={filtersSetters}
+            slot={<Button text='Añadir usuario' />}
+         />
          <UsersTable users={users} status={status} />
          {users?.length >= 1 && (
             <Pagination

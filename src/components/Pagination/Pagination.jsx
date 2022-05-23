@@ -1,6 +1,7 @@
-import BtnIcon from '../BtnIcon/BtnIcon';
+import IconButton from '../Buttons/IconButton';
 import NextArrow from '../icons/NextArrow';
 import PrevArrow from '../icons/PrevArrow';
+import Select from '../Inputs/Select';
 import style from './Pagination.module.css';
 
 const Pagination = ({ totalPages, pagination, paginationSetters }) => {
@@ -11,17 +12,15 @@ const Pagination = ({ totalPages, pagination, paginationSetters }) => {
    return (
       <footer className={style.footer}>
          <div className={style.steps}>
-            <div className={style.select}>
-               <select value={steps} onChange={e => setSteps(e.target.value)}>
-                  <option value={4}>4</option>
-                  <option value={6}>6</option>
-                  <option value={8}>8</option>
-               </select>
-            </div>
-            <label>usuarios por página</label>
+            <Select value={steps} onChange={e => setSteps(e.target.value)}>
+               <option value={4}>4</option>
+               <option value={6}>6</option>
+               <option value={8}>8</option>
+            </Select>
+            <span>usuarios por página</span>
          </div>
          <div className={style.pagination}>
-            <BtnIcon
+            <IconButton
                Icon={PrevArrow}
                disabled={currentPage === 1}
                onClick={() => setCurrentPage(currentPage - 1)}
@@ -29,7 +28,7 @@ const Pagination = ({ totalPages, pagination, paginationSetters }) => {
             <span>
                Página {currentPage} de {totalPages}
             </span>
-            <BtnIcon
+            <IconButton
                Icon={NextArrow}
                disabled={currentPage === totalPages}
                onClick={() => setCurrentPage(currentPage + 1)}
