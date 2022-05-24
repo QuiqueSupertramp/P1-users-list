@@ -1,10 +1,10 @@
-import { ROLES } from '@/lib/constants/roles';
+import { USER_ROLES } from '@/lib/constants/roles';
 import style from './UserRow.module.css';
 
 const ROLES_LIST = {
-   teacher: [ROLES.PROFESOR, style.profesor],
-   student: [ROLES.ALUMNO, style.alumno],
-   other: [ROLES.OTRO, style.otro],
+   [USER_ROLES.TEACHER]: ['Profesor', style.profesor],
+   [USER_ROLES.STUDENT]: ['Alumno', style.alumno],
+   [USER_ROLES.OTHER]: ['Otro', style.otro],
 };
 
 const Rol = ({ role }) => {

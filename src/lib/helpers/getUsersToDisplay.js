@@ -1,4 +1,4 @@
-import { ROLES } from '../constants/roles';
+import { USER_ROLES } from '../constants/roles';
 import { SELECT_OPTIONS } from '../constants/selectOptions';
 
 // Filter Functions ------------------------>
@@ -26,8 +26,9 @@ const sortUsers = (users, sortBy) => {
       case SELECT_OPTIONS.ROLE:
          return users.sort((a, b) => {
             if (a.role === b.role) return 0;
-            if (a.role === ROLES.PROFESOR) return -1;
-            if (a.role === ROLES.ALUMNO && b.role === ROLES.OTRO) return -1;
+            if (a.role === USER_ROLES.TEACHER) return -1;
+            if (a.role === USER_ROLES.STUDENT && b.role === USER_ROLES.OTHER)
+               return -1;
             return 1;
          });
 

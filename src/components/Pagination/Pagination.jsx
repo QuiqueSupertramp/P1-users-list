@@ -21,7 +21,7 @@ const Pagination = ({ totalPages, pagination, paginationSetters }) => {
          </div>
          <div className={style.pagination}>
             <IconButton
-               Icon={PrevArrow}
+               icon={PrevArrow}
                disabled={currentPage === 1}
                onClick={() => setCurrentPage(currentPage - 1)}
             />
@@ -29,7 +29,7 @@ const Pagination = ({ totalPages, pagination, paginationSetters }) => {
                Página {currentPage} de {totalPages}
             </span>
             <IconButton
-               Icon={NextArrow}
+               icon={NextArrow}
                disabled={currentPage === totalPages}
                onClick={() => setCurrentPage(currentPage + 1)}
             />

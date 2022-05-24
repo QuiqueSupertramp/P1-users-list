@@ -1,0 +1,27 @@
+.inputText {
+   display: flex;
+   flex-direction: column;
+   gap: 0.25rem;
+}
+.label {
+   margin-left: 0.5rem;
+   font-weight: bold;
+   font-size: var(--text-sm);
+}
+.input {
+   box-shadow: var(--shadow-sm);
+   border-radius: var(--rounded-sm);
+   height: 40px;
+   padding: 1rem;
+}
+
+.input::placeholder {
+   color: var(--color-lightgray);
+}
+
+.error {
+   margin-left: 0.5rem;
+   color: var(--color-red);
+   font-size: var(--text-sm);
+   min-height: 1rem;
+}

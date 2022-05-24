@@ -1,5 +1,5 @@
-export const ROLES = {
-   ALUMNO: 'student',
-   PROFESOR: 'teacher',
-   OTRO: 'other',
+export const USER_ROLES = {
+   STUDENT: 'student',
+   TEACHER: 'teacher',
+   OTHER: 'other',
 };

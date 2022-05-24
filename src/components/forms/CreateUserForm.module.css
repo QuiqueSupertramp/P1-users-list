@@ -1,0 +1,26 @@
+.wrapper {
+   position: relative;
+   box-shadow: var(--shadow-sm);
+   border-radius: var(--rounded-sm);
+   width: 100%;
+   padding: 1.5rem;
+}
+
+.createForm {
+   display: flex;
+   flex-direction: column;
+   gap: 1.5rem;
+}
+
+.row {
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.cancelButton {
+   position: absolute;
+   top: -1.25rem;
+   right: -1.25rem;
+}
