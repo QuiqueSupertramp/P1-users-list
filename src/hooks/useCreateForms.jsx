@@ -1,5 +1,5 @@
 import { validateName, validateUsername } from '@/lib/helpers/inputValidations';
-import checkByUsername from '@/services/checkByUsername';
+import findByUsername from '@/services/findByUsername';
 import { useState, useEffect } from 'react';
 
 const useCreateForms = () => {
@@ -41,10 +41,10 @@ const useCreateForms = () => {
    };
 
    const setUsernameError = error => {
-      setNewUser(preNewUser => ({
-         ...preNewUser,
+      setNewUser(prevNewUser => ({
+         ...prevNewUser,
          username: {
-            ...preNewUser.username,
+            ...prevNewUser.username,
             error,
             loading: false,
          },
@@ -69,11 +69,17 @@ const useCreateForms = () => {
       }
    }, [newUser.username.loading, newUser.username.value]);
 
+   const isFormInvalid =
+      newUser.name.error !== false ||
+      newUser.username.error !== false ||
+      newUser.username.loading;
+
    return {
       name: newUser.name,
       username: newUser.username,
       setName,
       setUsername,
+      isFormInvalid,
    };
 };
 
@@ -82,8 +88,9 @@ const checkUsernameAsync = async (
    setUsernameError,
    signal
 ) => {
-   const error = await checkByUsername(currentUsername, signal);
-   setUsernameError(error);
+   const res = await findByUsername(currentUsername, signal);
+   if (res.aborted) return;
+   setUsernameError(res.user ? 'El usuario ya existe' : false);
 };
 
 export default useCreateForms;

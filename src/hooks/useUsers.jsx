@@ -1,4 +1,3 @@
-import { getUsersToDisplay } from '@/lib/helpers/getUsersToDisplay';
 import getUsers from '@/services/getUsers';
 import { useState, useEffect } from 'react';
 
@@ -10,7 +9,7 @@ const initialUsers = {
    },
 };
 
-const useUsers = (filters, pagination) => {
+const useUsers = () => {
    const [usersData, setUsersData] = useState(initialUsers);
 
    const setUsers = users =>
@@ -19,37 +18,35 @@ const useUsers = (filters, pagination) => {
          status: { isLoading: false, errorMessage: '' },
       });
 
-   const setStatus = errorMessage => {
+   const setErrorMessage = errorMessage => {
       setUsersData({
          users: [],
-         status: {
-            isLoading: false,
-            errorMessage,
-         },
+         status: { isLoading: false, errorMessage },
+      });
+   };
+
+   const reloadUsers = () => {
+      setUsersData({
+         users: [],
+         status: { isLoading: true, errorMessage: '' },
       });
    };
 
    useEffect(() => {
       const controller = new AbortController();
       const signal = controller.signal;
-      fetchUsersData(setUsers, setStatus, signal);
+      fetchUsersData(setUsers, setErrorMessage, signal);
       return () => controller.abort();
-   }, []);
+   }, [usersData.status.isLoading]);
 
-   const { users, totalPages } = getUsersToDisplay(
-      usersData.users,
-      filters,
-      pagination
-   );
-
-   return { users, status: usersData.status, totalPages };
+   return { users: usersData.users, status: usersData.status, reloadUsers };
 };
 
 // Fetch users from API ------------------->
-const fetchUsersData = async (setUsers, setStatus, signal) => {
+const fetchUsersData = async (setUsers, setErrorMessage, signal) => {
    const { users, status } = await getUsers(signal);
    if (status.aborted) return;
-   !status.isOk ? setStatus(status.errorMessage) : setUsers(users);
+   !status.isOk ? setErrorMessage(status.errorMessage) : setUsers(users);
 };
 
 export default useUsers;

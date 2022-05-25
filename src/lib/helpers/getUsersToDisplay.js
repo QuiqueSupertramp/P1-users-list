@@ -79,5 +79,5 @@ export const getUsersToDisplay = (users, filters, pagination) => {
       pagination
    );
 
-   return { users: paginatedUsers, totalPages };
+   return { paginatedUsers, totalPages };
 };

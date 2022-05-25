@@ -7,12 +7,31 @@ import useUsers from '@/hooks/useUsers';
 import Button from '../Buttons/Button';
 import useForms from '@/hooks/useForms';
 import CreateUserForm from '../forms/CreateUserForm';
+import { getUsersToDisplay } from '@/lib/helpers/getUsersToDisplay';
+import FormWrapper from '../forms/FormWrapper';
 
 const UsersList = () => {
-   const { filters, pagination, filtersSetters, paginationSetters } =
-      useFilters();
-   const { users, status, totalPages } = useUsers(filters, pagination);
+   const {
+      filters,
+      pagination,
+      filtersSetters,
+      paginationSetters,
+      resetFilters,
+   } = useFilters();
+   const { users, status, reloadUsers } = useUsers();
    const { currentForm, setFilterForm, setCreateForm } = useForms();
+
+   const { paginatedUsers, totalPages } = getUsersToDisplay(
+      users,
+      filters,
+      pagination
+   );
+
+   const onSuccess = () => {
+      setFilterForm();
+      reloadUsers();
+      resetFilters();
+   };
 
    return (
       <section className={style.usersList}>
@@ -23,9 +42,11 @@ const UsersList = () => {
                slot={<Button onClick={setCreateForm}>Añadir usuario</Button>}
             />
          ) : (
-            <CreateUserForm closeForm={setFilterForm} />
+            <FormWrapper closeForm={setFilterForm}>
+               <CreateUserForm onSuccess={onSuccess} />
+            </FormWrapper>
          )}
-         <UsersTable users={users} status={status} />
+         <UsersTable users={paginatedUsers} status={status} />
          {users?.length >= 1 && (
             <Pagination
                totalPages={totalPages}

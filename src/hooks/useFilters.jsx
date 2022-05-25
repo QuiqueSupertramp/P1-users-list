@@ -1,13 +1,15 @@
 import { useState } from 'react';
 
+const initialFilters = {
+   searchValue: '',
+   onlyActiveUsers: false,
+   sortBy: 'defecto',
+   currentPage: 1,
+   steps: 6,
+};
+
 const useFilters = () => {
-   const [filterParams, setFilterParams] = useState({
-      searchValue: '',
-      onlyActiveUsers: false,
-      sortBy: 'defecto',
-      currentPage: 1,
-      steps: 6,
-   });
+   const [filterParams, setFilterParams] = useState(initialFilters);
 
    // Pagination Setters
    const setCurrentPage = currentPage =>
@@ -26,6 +28,8 @@ const useFilters = () => {
       setFilterParams({ ...filterParams, sortBy, currentPage: 1 });
    };
 
+   const resetFilters = () => setFilterParams(initialFilters);
+
    const filters = {
       searchValue: filterParams.searchValue,
       onlyActiveUsers: filterParams.onlyActiveUsers,
@@ -43,6 +47,7 @@ const useFilters = () => {
       pagination,
       filtersSetters,
       paginationSetters,
+      resetFilters,
    };
 };
 

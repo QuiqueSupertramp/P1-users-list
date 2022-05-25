@@ -1,0 +1,13 @@
+.wrapper {
+   position: relative;
+   box-shadow: var(--shadow-sm);
+   border-radius: var(--rounded-sm);
+   width: 100%;
+   padding: 1.5rem;
+}
+
+.cancelButton {
+   position: absolute;
+   top: -1.25rem;
+   right: -1.25rem;
+}
