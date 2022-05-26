@@ -9,7 +9,7 @@ const headers = () => {
 
 const deleteUser = async id => {
    try {
-      const res = await fetch(`${URL_API}as/${id}`, headers());
+      const res = await fetch(`${URL_API}/${id}`, headers());
       console.log('resFunc', res);
       if (!res.ok) throw new Error();
       return true;
