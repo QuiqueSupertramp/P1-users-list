@@ -33,10 +33,12 @@ const useUsers = () => {
    };
 
    useEffect(() => {
-      const controller = new AbortController();
-      const signal = controller.signal;
-      fetchUsersData(setUsers, setErrorMessage, signal);
-      return () => controller.abort();
+      if (usersData.status.isLoading) {
+         const controller = new AbortController();
+         const signal = controller.signal;
+         fetchUsersData(setUsers, setErrorMessage, signal);
+         return () => controller.abort();
+      }
    }, [usersData.status.isLoading]);
 
    return { users: usersData.users, status: usersData.status, reloadUsers };

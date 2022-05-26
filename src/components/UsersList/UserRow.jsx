@@ -4,7 +4,15 @@ import Rol from './Rol';
 import Status from './Status';
 import style from './UserRow.module.css';
 
-const UserRow = ({ name, username, role, active }) => {
+const UserRow = ({
+   id,
+   name,
+   username,
+   role,
+   active,
+   setDeleteForm,
+   setCurrentUser,
+}) => {
    return (
       <li className={style.userRow}>
          <div className={style.display}>
@@ -13,7 +21,12 @@ const UserRow = ({ name, username, role, active }) => {
          <div className={style.info}>
             <Status isActive={active} />
             <Rol role={role} />
-            <Icons />
+            <Icons
+               setDeleteForm={setDeleteForm}
+               name={name}
+               id={id}
+               setCurrentUser={setCurrentUser}
+            />
          </div>
       </li>
    );

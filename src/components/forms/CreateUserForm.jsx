@@ -9,15 +9,16 @@ import useCreateForms from '@/hooks/useCreateForms';
 import createUser from '@/services/createUser';
 import { useState } from 'react';
 
-const CreateUserForm = ({ onSuccess }) => {
+const CreateUserForm = ({ onSuccess, onError }) => {
    const [isSubmitting, setIsSubmitting] = useState(false);
+
    const { name, username, setName, setUsername, isFormInvalid } =
       useCreateForms();
 
    return (
       <form
          onSubmit={e =>
-            handleSubmit(e, name, username, setIsSubmitting, onSuccess)
+            handleSubmit(e, name, username, setIsSubmitting, onSuccess, onError)
          }
          className={style.createForm}>
          <div className={style.row}>
@@ -52,7 +53,14 @@ const CreateUserForm = ({ onSuccess }) => {
    );
 };
 
-const handleSubmit = async (e, name, username, setIsSubmitting, onSuccess) => {
+const handleSubmit = async (
+   e,
+   name,
+   username,
+   setIsSubmitting,
+   onSuccess,
+   onError
+) => {
    e.preventDefault();
    setIsSubmitting(true);
 
@@ -66,12 +74,10 @@ const handleSubmit = async (e, name, username, setIsSubmitting, onSuccess) => {
 
    const success = await createUser(newUser);
 
-   if (success) {
-      onSuccess();
-      // TODO: Alerta
-   } else {
+   if (success) onSuccess();
+   else {
       setIsSubmitting(false);
-      // TODO: Alerta
+      onError();
    }
 };
 

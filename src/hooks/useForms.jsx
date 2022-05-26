@@ -6,8 +6,9 @@ const useForms = () => {
 
    const setFilterForm = () => setCurrentForm(USERS_FORMS.FILTERS);
    const setCreateForm = () => setCurrentForm(USERS_FORMS.CREATE);
+   const setDeleteForm = () => setCurrentForm(USERS_FORMS.DELETE);
 
-   return { currentForm, setFilterForm, setCreateForm };
+   return { currentForm, setFilterForm, setCreateForm, setDeleteForm };
 };
 
 export default useForms;

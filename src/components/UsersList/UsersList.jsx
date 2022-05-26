@@ -1,16 +1,23 @@
-import useFilters from '@/hooks/useFilters';
-import Pagination from '../Pagination/Pagination';
-import UsersFilters from '../UsersFilters/UsersFilters';
-import UsersTable from './UsersTable';
+import { createPortal } from 'react-dom';
 import style from './UsersList.module.css';
 import useUsers from '@/hooks/useUsers';
-import Button from '../Buttons/Button';
 import useForms from '@/hooks/useForms';
-import CreateUserForm from '../forms/CreateUserForm';
+import useFilters from '@/hooks/useFilters';
+import Pagination from '../Pagination/Pagination';
+import UsersTable from './UsersTable';
+import Alert from '../Modals/Alert';
 import { getUsersToDisplay } from '@/lib/helpers/getUsersToDisplay';
-import FormWrapper from '../forms/FormWrapper';
+import useAlert from '@/hooks/useAlert';
+import Header from '../Header/Header';
+import { useState } from 'react';
 
 const UsersList = () => {
+   const [currentUser, setCurrentUser] = useState({ id: '', name: '' });
+   const { users, status, reloadUsers } = useUsers();
+   const { currentForm, setFilterForm, setCreateForm, setDeleteForm } =
+      useForms();
+   const { alert, setSuccessAlert, setErrorAlert, setDeleteSuccesAlert } =
+      useAlert();
    const {
       filters,
       pagination,
@@ -18,8 +25,6 @@ const UsersList = () => {
       paginationSetters,
       resetFilters,
    } = useFilters();
-   const { users, status, reloadUsers } = useUsers();
-   const { currentForm, setFilterForm, setCreateForm } = useForms();
 
    const { paginatedUsers, totalPages } = getUsersToDisplay(
       users,
@@ -27,26 +32,46 @@ const UsersList = () => {
       pagination
    );
 
+   const onDeleteSuccess = () => {
+      // CerrarFormulario
+      setFilterForm();
+      // RecargarUsuarios
+      reloadUsers();
+      // Resetear filtros
+      resetFilters();
+      // Resetear currentUser
+      setCurrentUser({ id: '', name: '' });
+      // Activar alerta
+      setDeleteSuccesAlert();
+   };
+
    const onSuccess = () => {
       setFilterForm();
       reloadUsers();
       resetFilters();
+      setSuccessAlert();
    };
 
    return (
       <section className={style.usersList}>
-         {currentForm === 0 ? (
-            <UsersFilters
-               filters={filters}
-               filtersSetters={filtersSetters}
-               slot={<Button onClick={setCreateForm}>Añadir usuario</Button>}
-            />
-         ) : (
-            <FormWrapper closeForm={setFilterForm}>
-               <CreateUserForm onSuccess={onSuccess} />
-            </FormWrapper>
-         )}
-         <UsersTable users={paginatedUsers} status={status} />
+         <Header
+            filters={filters}
+            filtersSetters={filtersSetters}
+            onSuccess={onSuccess}
+            setErrorAlert={setErrorAlert}
+            currentForm={currentForm}
+            setFilterForm={setFilterForm}
+            setCreateForm={setCreateForm}
+            currentUser={currentUser}
+            onDeleteSuccess={onDeleteSuccess}
+         />
+
+         <UsersTable
+            users={paginatedUsers}
+            status={status}
+            setDeleteForm={setDeleteForm}
+            setCurrentUser={setCurrentUser}
+         />
          {users?.length >= 1 && (
             <Pagination
                totalPages={totalPages}
@@ -54,6 +79,11 @@ const UsersList = () => {
                paginationSetters={paginationSetters}
             />
          )}
+         {alert.kind &&
+            createPortal(
+               <Alert text={alert.text} kind={alert.kind} />,
+               document.getElementById('alerts')
+            )}
       </section>
    );
 };

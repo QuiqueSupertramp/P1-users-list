@@ -1,0 +1,41 @@
+.alert {
+   position: fixed;
+   top: 2rem;
+   left: -20rem;
+   background-color: var(--color-blue);
+   padding: 1rem;
+   padding-left: 3rem;
+   border-radius: var(--rounded-sm);
+   box-shadow: var(--shadow-md);
+   min-width: 200px;
+   font-size: var(--text-sm);
+}
+
+.success {
+   border-right: 5px solid var(--color-green);
+   animation: appears 5s backwards;
+}
+
+.error {
+   border-right: 5px solid var(--color-red);
+   animation: appears 5s backwards;
+}
+
+.info {
+   border-right: 5px solid var(--color-blue);
+   animation: appears 5s backwards;
+}
+
+@keyframes appears {
+   10% {
+      transform: translateX(18rem);
+   }
+
+   80% {
+      transform: translateX(18rem);
+   }
+
+   100% {
+      transform: translateX(-18rem);
+   }
+}
