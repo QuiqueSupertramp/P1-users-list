@@ -1,5 +1,14 @@
 import { URL_API } from '@/lib/constants/api';
 
+const createUser = async newUser => {
+   try {
+      const res = await fetch(URL_API, headers(newUser));
+      return res.ok;
+   } catch {
+      return false;
+   }
+};
+
 const headers = newUser => {
    return {
       headers: {
@@ -8,16 +17,6 @@ const headers = newUser => {
       method: 'POST',
       body: JSON.stringify(newUser),
    };
-};
-
-const createUser = async newUser => {
-   try {
-      const res = await fetch(URL_API, headers(newUser));
-      if (!res.ok) throw new Error();
-      return true;
-   } catch (error) {
-      return false;
-   }
 };
 
 export default createUser;

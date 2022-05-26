@@ -1,23 +1,5 @@
 import { URL_API } from '@/lib/constants/api';
 
-const FETCH_ERROR = {
-   user: undefined,
-   status: {
-      isOk: false,
-      errorMessage: 'Error al cargar usuarios',
-      aborted: false,
-   },
-};
-
-const ABORT_ERROR = {
-   user: undefined,
-   status: {
-      isOk: true,
-      errorMessage: 'Petición abortada',
-      aborted: true,
-   },
-};
-
 const findByUsername = async (username, signal) => {
    try {
       const res = await fetch(`${URL_API}?username=${username}`, { signal });
@@ -37,6 +19,24 @@ const findByUsername = async (username, signal) => {
       if (error.name === 'AbortError') return ABORT_ERROR;
       return FETCH_ERROR;
    }
+};
+
+const FETCH_ERROR = {
+   user: undefined,
+   status: {
+      isOk: false,
+      errorMessage: 'Error al cargar usuarios',
+      aborted: false,
+   },
+};
+
+const ABORT_ERROR = {
+   user: undefined,
+   status: {
+      isOk: true,
+      errorMessage: 'Petición abortada',
+      aborted: true,
+   },
 };
 
 export default findByUsername;
