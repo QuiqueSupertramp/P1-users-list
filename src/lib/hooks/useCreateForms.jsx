@@ -1,5 +1,5 @@
 import { validateName, validateUsername } from '@/lib/helpers/inputValidations';
-import findByUsername from '@/services/findByUsername';
+import findByUsername from '@/lib/services/findByUsername';
 import { useState, useEffect } from 'react';
 
 const useCreateForms = () => {

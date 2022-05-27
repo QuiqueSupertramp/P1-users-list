@@ -1,9 +1,9 @@
-.usersList {
+.usersTable {
    width: 100%;
    display: flex;
    flex-direction: column;
    justify-content: center;
-   align-items: center;
-   gap: 2rem;
+   align-items: flex-start;
+   gap: 1rem;
    padding: 0;
 }

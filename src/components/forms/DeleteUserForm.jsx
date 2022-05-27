@@ -1,4 +1,4 @@
-import deleteUser from '@/services/deleteUser';
+import deleteUser from '@/lib/services/deleteUser';
 import { useState } from 'react';
 import Button from '../Buttons/Button';
 import style from './DeleteUserForm.module.css';

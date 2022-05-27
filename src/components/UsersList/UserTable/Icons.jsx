@@ -1,5 +1,5 @@
-import Pencil from '../icons/Pencil';
-import Trash from '../icons/Trash';
+import Pencil from '@/components/icons/Pencil';
+import Trash from '@/components/icons/Trash';
 import style from './UserRow.module.css';
 
 const Icons = ({ setDeleteForm, id, name, setCurrentUser }) => {

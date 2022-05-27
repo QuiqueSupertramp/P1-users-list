@@ -1,7 +1,7 @@
-import IconButton from '../Buttons/IconButton';
-import NextArrow from '../icons/NextArrow';
-import PrevArrow from '../icons/PrevArrow';
-import Select from '../Inputs/Select';
+import IconButton from '@/components/Buttons/IconButton';
+import NextArrow from '../../icons/NextArrow';
+import PrevArrow from '../../icons/PrevArrow';
+import Select from '../../Inputs/Select';
 import style from './Pagination.module.css';
 
 const Pagination = ({ totalPages, pagination, paginationSetters }) => {

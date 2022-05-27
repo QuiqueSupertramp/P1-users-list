@@ -5,8 +5,8 @@ import { USER_ROLES } from '@/lib/constants/roles';
 import Checkbox from '../Inputs/Checkbox';
 import Button from '../Buttons/Button';
 import InputTextAsync from '../Inputs/InputTextAsync';
-import useCreateForms from '@/hooks/useCreateForms';
-import createUser from '@/services/createUser';
+import useCreateForms from '@/lib/hooks/useCreateForms';
+import createUser from '@/lib/services/createUser';
 import { useState } from 'react';
 
 const CreateUserForm = ({ onSuccess, onError }) => {

@@ -1,4 +1,4 @@
-import getUsers from '@/services/getUsers';
+import getUsers from '@/lib/services/getUsers';
 import { useState, useEffect } from 'react';
 
 const initialUsers = {

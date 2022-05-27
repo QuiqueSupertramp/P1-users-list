@@ -1,8 +1,8 @@
-import { SELECT_OPTIONS } from '@/lib/constants/selectOptions';
-import Checkbox from '../Inputs/Checkbox';
-import InputSearch from '../Inputs/InputSearch';
-import Select from '../Inputs/Select';
 import style from './UsersFilters.module.css';
+import { SELECT_OPTIONS } from '@/lib/constants/selectOptions';
+import Checkbox from '@/components/Inputs/Checkbox';
+import InputSearch from '@/components/Inputs/InputSearch';
+import Select from '@/components/Inputs/Select';
 
 const UsersFilters = ({ filters, filtersSetters, slot }) => {
    const { searchValue, onlyActiveUsers, sortBy } = filters;

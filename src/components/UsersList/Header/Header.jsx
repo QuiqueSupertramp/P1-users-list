@@ -1,14 +1,13 @@
-import Button from '../Buttons/Button';
-import CreateUserForm from '../forms/CreateUserForm';
-import DeleteUserForm from '../forms/DeleteUserForm';
-import FormWrapper from '../forms/FormWrapper';
-import UsersFilters from '../UsersFilters/UsersFilters';
+import Button from '@/components/Buttons/Button';
+import CreateUserForm from '@/components/forms/CreateUserForm';
+import DeleteUserForm from '@/components/forms/DeleteUserForm';
+import FormWrapper from '@/components/forms/FormWrapper';
+import UsersFilters from './UsersFilters/UsersFilters';
 
 const Header = ({
    filters,
    filtersSetters,
    onSuccess,
-   setErrorAlert,
    currentForm,
    setFilterForm,
    setCreateForm,
@@ -26,7 +25,7 @@ const Header = ({
    if (currentForm === 1)
       return (
          <FormWrapper closeForm={setFilterForm}>
-            <CreateUserForm onSuccess={onSuccess} onError={setErrorAlert} />
+            <CreateUserForm onSuccess={onSuccess} />
          </FormWrapper>
       );
    if (currentForm === 3)
@@ -35,7 +34,6 @@ const Header = ({
             <DeleteUserForm
                currentUser={currentUser}
                onDeleteSuccess={onDeleteSuccess}
-               onError={setErrorAlert}
             />
          </FormWrapper>
       );

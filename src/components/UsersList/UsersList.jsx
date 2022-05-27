@@ -1,12 +1,12 @@
 import style from './UsersList.module.css';
-import useUsers from '@/hooks/useUsers';
-import useForms from '@/hooks/useForms';
-import useFilters from '@/hooks/useFilters';
-import Pagination from '../Pagination/Pagination';
-import UsersTable from './UsersTable';
+import useUsers from '@/lib/hooks/useUsers';
+import useForms from '@/lib/hooks/useForms';
+import useFilters from '@/lib/hooks/useFilters';
 import { getUsersToDisplay } from '@/lib/helpers/getUsersToDisplay';
-import Header from '../Header/Header';
 import { useState } from 'react';
+import UsersTable from './UserTable/UsersTable';
+import Pagination from './Pagination/Pagination';
+import Header from './Header/Header';
 
 const UsersList = () => {
    const [currentUser, setCurrentUser] = useState({ id: '', name: '' });

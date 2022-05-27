@@ -1,5 +1,5 @@
 import UserRow from './UserRow';
-import style from './UsersList.module.css';
+import style from './UsersTable.module.css';
 
 const UsersTable = ({ users, status, setDeleteForm, setCurrentUser }) => {
    if (status.isLoading) return <p>Cargando...</p>;
