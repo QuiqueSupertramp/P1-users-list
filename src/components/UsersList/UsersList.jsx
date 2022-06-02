@@ -1,18 +1,15 @@
 import style from './UsersList.module.css';
 import useUsers from '@/lib/hooks/useUsers';
-import useForms from '@/lib/hooks/useForms';
 import useFilters from '@/lib/hooks/useFilters';
 import { getUsersToDisplay } from '@/lib/helpers/getUsersToDisplay';
-import { useState } from 'react';
 import UsersTable from './UserTable/UsersTable';
 import Pagination from './Pagination/Pagination';
-import Header from './Header/Header';
+import UsersFilters from './Header/UsersFilters/UsersFilters';
+import FormWrapper from '../forms/FormWrapper';
+import UsersFormsProvider from '../Providers/UsersFormsProvider';
 
 const UsersList = () => {
-   const [currentUser, setCurrentUser] = useState({ id: '', name: '' });
    const { users, status, reloadUsers } = useUsers();
-   const { currentForm, setFilterForm, setCreateForm, setDeleteForm } =
-      useForms();
 
    const {
       filters,
@@ -28,38 +25,16 @@ const UsersList = () => {
       pagination
    );
 
-   const onDeleteSuccess = () => {
-      setFilterForm();
-      reloadUsers();
-      resetFilters();
-      setCurrentUser({ id: '', name: '' });
-   };
-
-   const onSuccess = () => {
-      setFilterForm();
-      reloadUsers();
-      resetFilters();
-   };
-
    return (
       <section className={style.usersList}>
-         <Header
-            filters={filters}
-            filtersSetters={filtersSetters}
-            onSuccess={onSuccess}
-            currentForm={currentForm}
-            setFilterForm={setFilterForm}
-            setCreateForm={setCreateForm}
-            currentUser={currentUser}
-            onDeleteSuccess={onDeleteSuccess}
-         />
+         <UsersFormsProvider
+            reloadUsers={reloadUsers}
+            resetFilters={resetFilters}>
+            <UsersFilters filters={filters} filtersSetters={filtersSetters} />
+            <FormWrapper />
+            <UsersTable users={paginatedUsers} status={status} />
+         </UsersFormsProvider>
 
-         <UsersTable
-            users={paginatedUsers}
-            status={status}
-            setDeleteForm={setDeleteForm}
-            setCurrentUser={setCurrentUser}
-         />
          {users?.length >= 1 && (
             <Pagination
                totalPages={totalPages}

@@ -2,7 +2,7 @@ import CheckCircle from '@/components/icons/CheckCircle';
 import CrossCircle from '@/components/icons/CrossCircle';
 import style from './UserRow.module.css';
 
-const Status = ({ isActive }) => {
+const UserStatus = ({ isActive }) => {
    const activeClass = isActive === true ? style.active : style.inactive;
    const IsActiveIcon = isActive === true ? CheckCircle : CrossCircle;
    const activeText = isActive === true ? 'Activo' : 'Inactivo';
@@ -17,4 +17,4 @@ const Status = ({ isActive }) => {
    );
 };
 
-export default Status;
+export default UserStatus;

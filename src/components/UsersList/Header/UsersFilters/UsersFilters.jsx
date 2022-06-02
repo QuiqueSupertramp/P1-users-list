@@ -3,8 +3,16 @@ import { SELECT_OPTIONS } from '@/lib/constants/selectOptions';
 import Checkbox from '@/components/Inputs/Checkbox';
 import InputSearch from '@/components/Inputs/InputSearch';
 import Select from '@/components/Inputs/Select';
+import Button from '@/components/Buttons/Button';
+import { useContext } from 'react';
+import { UsersFormsContext } from '@/lib/contexts/UsersFormsContext';
+import USERS_FORMS from '@/lib/constants/users_forms';
 
-const UsersFilters = ({ filters, filtersSetters, slot }) => {
+const UsersFilters = ({ filters, filtersSetters }) => {
+   const { setCreateForm, currentForm } = useContext(UsersFormsContext);
+
+   if (currentForm !== USERS_FORMS.FILTERS) return null;
+
    const { searchValue, onlyActiveUsers, sortBy } = filters;
    const { setSearchValue, setOnlyActiveUsers, setSortBy } = filtersSetters;
 
@@ -33,7 +41,7 @@ const UsersFilters = ({ filters, filtersSetters, slot }) => {
                checked={onlyActiveUsers}
                onChange={toggleOnlyActiveUsers}
             />
-            {slot}
+            <Button onClick={setCreateForm}>Añadir usuario</Button>
          </div>
       </header>
    );

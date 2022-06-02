@@ -1,13 +1,6 @@
 {
   "users": [
     {
-      "id": "c3ce080a-88ee-4b1c-b88e-e7070b1365e6",
-      "username": "bfarge0",
-      "name": "Bird Farge",
-      "active": false,
-      "role": "student"
-    },
-    {
       "id": "1a751902-cad9-420b-bffa-a664b2616bf7",
       "username": "arizzi1",
       "name": "Alikee Rizzi",
@@ -176,9 +169,9 @@
       "active": false
     },
     {
-      "id": "5e6f7cb7-f452-4250-ae08-4b9a038959b6",
-      "name": "dfsdsds",
-      "username": "dsfdsfsdf",
+      "id": "94ec2b56-d793-42b0-81f3-fb1b51d56149",
+      "name": "slgbnsdjbn",
+      "username": "dafjnvjdf",
       "role": "student",
       "active": false
     }

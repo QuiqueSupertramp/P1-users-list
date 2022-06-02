@@ -89,7 +89,7 @@ const checkUsernameAsync = async (
    signal
 ) => {
    const res = await findByUsername(currentUsername, signal);
-   if (res.aborted) return;
+   if (res.status.aborted) return;
    setUsernameError(res.user ? 'El usuario ya existe' : false);
 };
 

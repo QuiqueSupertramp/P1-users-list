@@ -1,32 +1,19 @@
 import DisplayName from './DisplayName';
-import Icons from './Icons';
-import Rol from './Rol';
-import Status from './Status';
+import UserIcons from './UserIcons';
+import UserRol from './UserRol';
+import UserStatus from './UserStatus';
 import style from './UserRow.module.css';
 
-const UserRow = ({
-   id,
-   name,
-   username,
-   role,
-   active,
-   setDeleteForm,
-   setCurrentUser,
-}) => {
+const UserRow = ({ user }) => {
    return (
       <li className={style.userRow}>
          <div className={style.display}>
-            <DisplayName name={name} username={username} />
+            <DisplayName name={user.name} username={user.username} />
          </div>
          <div className={style.info}>
-            <Status isActive={active} />
-            <Rol role={role} />
-            <Icons
-               setDeleteForm={setDeleteForm}
-               name={name}
-               id={id}
-               setCurrentUser={setCurrentUser}
-            />
+            <UserStatus isActive={user.active} />
+            <UserRol role={user.role} />
+            <UserIcons user={user} />
          </div>
       </li>
    );

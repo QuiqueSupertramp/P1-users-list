@@ -1,22 +1,19 @@
+import { UsersFormsContext } from '@/lib/contexts/UsersFormsContext';
 import deleteUser from '@/lib/services/deleteUser';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Button from '../Buttons/Button';
 import style from './DeleteUserForm.module.css';
 
-const DeleteUserForm = ({ currentUser, onDeleteSuccess, onError }) => {
+const DeleteUserForm = () => {
+   const { currentUser, setFilterForm, onSuccess } =
+      useContext(UsersFormsContext);
    const [isSubmitting, setIsSubmitting] = useState(false);
 
    return (
       <form
          className={style.deleteForm}
          onSubmit={e =>
-            handleClick(
-               e,
-               currentUser.id,
-               onDeleteSuccess,
-               setIsSubmitting,
-               onError
-            )
+            handleClick(e, currentUser.id, onSuccess, setIsSubmitting)
          }>
          <p>
             Estas seguro de que quieres elminar al usuario {'"'}
@@ -24,7 +21,9 @@ const DeleteUserForm = ({ currentUser, onDeleteSuccess, onError }) => {
             {'"'}
          </p>
          <div className={style.buttons} disabled={isSubmitting}>
-            <Button filled={false}>Cancelar</Button>
+            <Button type='button' filled={false} onClick={setFilterForm}>
+               Cancelar
+            </Button>
             <Button type='submit' disabled={isSubmitting}>
                {isSubmitting ? 'Eliminando...' : 'Eliminar usuario'}
             </Button>
@@ -33,23 +32,13 @@ const DeleteUserForm = ({ currentUser, onDeleteSuccess, onError }) => {
    );
 };
 
-const handleClick = async (
-   e,
-   userId,
-   onDeleteSuccess,
-   setIsSubmitting,
-   onError
-) => {
+const handleClick = async (e, userId, onSuccess, setIsSubmitting) => {
    e.preventDefault();
    setIsSubmitting(true);
 
    const success = await deleteUser(userId);
 
-   if (success) onDeleteSuccess();
-   else {
-      setIsSubmitting(false);
-      onError();
-   }
+   success ? onSuccess() : setIsSubmitting(false);
 };
 
 export default DeleteUserForm;

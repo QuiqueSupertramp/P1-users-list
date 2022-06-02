@@ -1,8 +1,8 @@
-const { URL_API } = require('@/lib/constants/api');
+import { URL_API } from '../constants/api';
 
 const updateUser = async user => {
    try {
-      const res = await fetch(`${URL_API}/${user.id}`, headers);
+      const res = await fetch(`${URL_API}/${user.id}`, headers(user));
       return res.ok;
    } catch {
       return false;
@@ -12,7 +12,7 @@ const updateUser = async user => {
 const headers = user => {
    return {
       headers: {
-         'Content-type': 'application/json',
+         'Content-Type': 'application/json',
       },
       method: 'PATCH',
       body: JSON.stringify(user),

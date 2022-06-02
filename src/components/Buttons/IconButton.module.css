@@ -19,7 +19,7 @@
 }
 
 .normal {
-   background-color: none;
+   background-color: transparent;
 }
 
 .normal:disabled {

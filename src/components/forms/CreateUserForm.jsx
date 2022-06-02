@@ -7,9 +7,12 @@ import Button from '../Buttons/Button';
 import InputTextAsync from '../Inputs/InputTextAsync';
 import useCreateForms from '@/lib/hooks/useCreateForms';
 import createUser from '@/lib/services/createUser';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { UsersFormsContext } from '@/lib/contexts/UsersFormsContext';
 
-const CreateUserForm = ({ onSuccess, onError }) => {
+const CreateUserForm = () => {
+   const { onSuccess } = useContext(UsersFormsContext);
+
    const [isSubmitting, setIsSubmitting] = useState(false);
 
    const { name, username, setName, setUsername, isFormInvalid } =
@@ -18,7 +21,7 @@ const CreateUserForm = ({ onSuccess, onError }) => {
    return (
       <form
          onSubmit={e =>
-            handleSubmit(e, name, username, setIsSubmitting, onSuccess, onError)
+            handleSubmit(e, name, username, setIsSubmitting, onSuccess)
          }
          className={style.createForm}>
          <div className={style.row}>
@@ -53,14 +56,7 @@ const CreateUserForm = ({ onSuccess, onError }) => {
    );
 };
 
-const handleSubmit = async (
-   e,
-   name,
-   username,
-   setIsSubmitting,
-   onSuccess,
-   onError
-) => {
+const handleSubmit = async (e, name, username, setIsSubmitting, onSuccess) => {
    e.preventDefault();
    setIsSubmitting(true);
 
@@ -74,11 +70,7 @@ const handleSubmit = async (
 
    const success = await createUser(newUser);
 
-   if (success) onSuccess();
-   else {
-      setIsSubmitting(false);
-      onError();
-   }
+   success ? onSuccess() : setIsSubmitting(false);
 };
 
 export default CreateUserForm;

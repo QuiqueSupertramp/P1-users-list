@@ -7,7 +7,7 @@ const ROLES_LIST = {
    [USER_ROLES.OTHER]: ['Otro', style.otro],
 };
 
-const Rol = ({ role }) => {
+const UserRol = ({ role }) => {
    const [rolName, rolClass] = ROLES_LIST[role];
 
    return (
@@ -19,4 +19,4 @@ const Rol = ({ role }) => {
    );
 };
 
-export default Rol;
+export default UserRol;
