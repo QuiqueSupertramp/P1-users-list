@@ -15,14 +15,11 @@ const CreateUserForm = () => {
 
    const [isSubmitting, setIsSubmitting] = useState(false);
 
-   const { name, username, setName, setUsername, isFormInvalid } =
-      useCreateForms();
+   const { name, username, setName, setUsername, isFormInvalid } = useCreateForms();
 
    return (
       <form
-         onSubmit={e =>
-            handleSubmit(e, name, username, setIsSubmitting, onSuccess)
-         }
+         onSubmit={e => handleSubmit(e, name, username, setIsSubmitting, onSuccess)}
          className={style.createForm}>
          <div className={style.row}>
             <InputText

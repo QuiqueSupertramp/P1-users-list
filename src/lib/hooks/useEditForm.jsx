@@ -3,9 +3,7 @@ import { validateName, validateUsername } from '../helpers/inputValidations';
 import findByUsername from '../services/findByUsername';
 
 const useEditForm = currentUser => {
-   const [formValues, setFormValues] = useState(() =>
-      getInitialState(currentUser)
-   );
+   const [formValues, setFormValues] = useState(() => getInitialState(currentUser));
 
    const setName = newName => {
       const error = validateName(newName);
@@ -22,8 +20,7 @@ const useEditForm = currentUser => {
       const error = validateUsername(newUsername);
       const isInitialUsername = newUsername === currentUser.username;
       // Si es correcto,activamos el loading para q active el sideEffect
-      const loading =
-         error === undefined ? false : !error && !isInitialUsername;
+      const loading = error === undefined ? false : !error && !isInitialUsername;
 
       setFormValues({
          ...formValues,
@@ -36,8 +33,7 @@ const useEditForm = currentUser => {
    };
 
    const setRole = newRole => setFormValues({ ...formValues, role: newRole });
-   const setActive = newActive =>
-      setFormValues({ ...formValues, active: newActive });
+   const setActive = newActive => setFormValues({ ...formValues, active: newActive });
 
    const setUsernameError = error =>
       setFormValues(prevUser => ({
@@ -66,11 +62,7 @@ const useEditForm = currentUser => {
          const controller = new AbortController();
          const signal = controller.signal;
          const timeoutId = setTimeout(() => {
-            checkIfUsernameExist(
-               formValues.username.value,
-               setUsernameError,
-               signal
-            );
+            checkIfUsernameExist(formValues.username.value, setUsernameError, signal);
          }, 500);
          return () => {
             controller.abort();
@@ -103,11 +95,7 @@ const getInitialState = currentUser => ({
    active: currentUser.active,
 });
 
-const checkIfUsernameExist = async (
-   currentUsername,
-   setUsernameError,
-   signal
-) => {
+const checkIfUsernameExist = async (currentUsername, setUsernameError, signal) => {
    const res = await findByUsername(currentUsername, signal);
    if (res.status.aborted) return;
    setUsernameError(res.user ? 'El usuario ya existe' : false);

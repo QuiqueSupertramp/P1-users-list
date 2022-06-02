@@ -11,25 +11,13 @@ import UsersFormsProvider from '../Providers/UsersFormsProvider';
 const UsersList = () => {
    const { users, status, reloadUsers } = useUsers();
 
-   const {
-      filters,
-      pagination,
-      filtersSetters,
-      paginationSetters,
-      resetFilters,
-   } = useFilters();
+   const { filters, pagination, filtersSetters, paginationSetters, resetFilters } = useFilters();
 
-   const { paginatedUsers, totalPages } = getUsersToDisplay(
-      users,
-      filters,
-      pagination
-   );
+   const { paginatedUsers, totalPages } = getUsersToDisplay(users, filters, pagination);
 
    return (
       <section className={style.usersList}>
-         <UsersFormsProvider
-            reloadUsers={reloadUsers}
-            resetFilters={resetFilters}>
+         <UsersFormsProvider reloadUsers={reloadUsers} resetFilters={resetFilters}>
             <UsersFilters filters={filters} filtersSetters={filtersSetters} />
             <FormWrapper />
             <UsersTable users={paginatedUsers} status={status} />

@@ -30,9 +30,7 @@ const UsersFilters = ({ filters, filtersSetters }) => {
                <option value={SELECT_OPTIONS.DEFAULT}>Por defecto</option>
                <option value={SELECT_OPTIONS.ROLE}>Por rol</option>
                <option value={SELECT_OPTIONS.NAME}>Por orden alfabético</option>
-               {!onlyActiveUsers && (
-                  <option value={SELECT_OPTIONS.ACTIVE}>Por activos</option>
-               )}
+               {!onlyActiveUsers && <option value={SELECT_OPTIONS.ACTIVE}>Por activos</option>}
             </Select>
          </div>
          <div className={style.filtersRowTwo}>

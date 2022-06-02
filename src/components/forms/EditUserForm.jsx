@@ -14,27 +14,13 @@ const EditUserForm = () => {
    const { currentUser, onSuccess } = useContext(UsersFormsContext);
    const [isSubmitting, setIsSubmitting] = useState(false);
 
-   const {
-      formValues,
-      setName,
-      setUsername,
-      setRole,
-      setActive,
-      isFormInvalid,
-   } = useEditForm(currentUser);
+   const { formValues, setName, setUsername, setRole, setActive, isFormInvalid } =
+      useEditForm(currentUser);
 
    return (
       <form
          className={style.editForm}
-         onSubmit={e =>
-            handleSubmit(
-               e,
-               currentUser.id,
-               formValues,
-               setIsSubmitting,
-               onSuccess
-            )
-         }>
+         onSubmit={e => handleSubmit(e, currentUser.id, formValues, setIsSubmitting, onSuccess)}>
          <div className={style.row}>
             <InputText
                label='Nombre'
@@ -53,9 +39,7 @@ const EditUserForm = () => {
             />
          </div>
          <div className={style.row}>
-            <Select
-               value={formValues.role}
-               onChange={e => setRole(e.target.value)}>
+            <Select value={formValues.role} onChange={e => setRole(e.target.value)}>
                <option value={USER_ROLES.STUDENT}>Alumno</option>
                <option value={USER_ROLES.TEACHER}>Profesor</option>
                <option value={USER_ROLES.OTHER}>Otro</option>

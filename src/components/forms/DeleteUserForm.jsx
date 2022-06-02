@@ -5,16 +5,13 @@ import Button from '../Buttons/Button';
 import style from './DeleteUserForm.module.css';
 
 const DeleteUserForm = () => {
-   const { currentUser, setFilterForm, onSuccess } =
-      useContext(UsersFormsContext);
+   const { currentUser, setFilterForm, onSuccess } = useContext(UsersFormsContext);
    const [isSubmitting, setIsSubmitting] = useState(false);
 
    return (
       <form
          className={style.deleteForm}
-         onSubmit={e =>
-            handleClick(e, currentUser.id, onSuccess, setIsSubmitting)
-         }>
+         onSubmit={e => handleClick(e, currentUser.id, onSuccess, setIsSubmitting)}>
          <p>
             Estas seguro de que quieres elminar al usuario {'"'}
             {currentUser.name}

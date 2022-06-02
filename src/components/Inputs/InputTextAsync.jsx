@@ -20,8 +20,7 @@ const InputTextAsync = ({ label, error, isLoading, ...props }) => {
 const getIcon = (error, isLoading) => {
    if (isLoading === true) return <Update className={style.loadingIcon} />;
    if (!isLoading && error) return <CrossCircle className={style.errorIcon} />;
-   if (!isLoading && error === false)
-      return <CheckCircle className={style.successIcon} />;
+   if (!isLoading && error === false) return <CheckCircle className={style.successIcon} />;
 };
 
 export default InputTextAsync;

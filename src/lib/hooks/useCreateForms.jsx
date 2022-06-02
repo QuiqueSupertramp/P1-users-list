@@ -56,11 +56,7 @@ const useCreateForms = () => {
          const controller = new AbortController();
          const signal = controller.signal;
          const timeoutId = setTimeout(() => {
-            checkUsernameAsync(
-               newUser.username.value,
-               setUsernameError,
-               signal
-            );
+            checkUsernameAsync(newUser.username.value, setUsernameError, signal);
          }, 500);
          return () => {
             controller.abort();
@@ -70,9 +66,7 @@ const useCreateForms = () => {
    }, [newUser.username.loading, newUser.username.value]);
 
    const isFormInvalid =
-      newUser.name.error !== false ||
-      newUser.username.error !== false ||
-      newUser.username.loading;
+      newUser.name.error !== false || newUser.username.error !== false || newUser.username.loading;
 
    return {
       name: newUser.name,
@@ -83,11 +77,7 @@ const useCreateForms = () => {
    };
 };
 
-const checkUsernameAsync = async (
-   currentUsername,
-   setUsernameError,
-   signal
-) => {
+const checkUsernameAsync = async (currentUsername, setUsernameError, signal) => {
    const res = await findByUsername(currentUsername, signal);
    if (res.status.aborted) return;
    setUsernameError(res.user ? 'El usuario ya existe' : false);

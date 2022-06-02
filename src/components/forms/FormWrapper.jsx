@@ -17,11 +17,7 @@ const FormWrapper = () => {
 
    return (
       <div className={style.wrapper}>
-         <IconButton
-            className={style.cancelButton}
-            icon={CrossIcon}
-            onClick={setFilterForm}
-         />
+         <IconButton className={style.cancelButton} icon={CrossIcon} onClick={setFilterForm} />
          {form}
       </div>
    );

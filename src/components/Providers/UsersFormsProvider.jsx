@@ -2,14 +2,8 @@ import { UsersFormsContext } from '@/lib/contexts/UsersFormsContext';
 import useForms from '@/lib/hooks/useForms';
 
 const UsersFormsProvider = ({ children, reloadUsers, resetFilters }) => {
-   const {
-      currentForm,
-      currentUser,
-      setFilterForm,
-      setCreateForm,
-      setDeleteForm,
-      setEditForm,
-   } = useForms();
+   const { currentForm, currentUser, setFilterForm, setCreateForm, setDeleteForm, setEditForm } =
+      useForms();
 
    const onSuccess = () => {
       setFilterForm();

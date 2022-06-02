@@ -11,9 +11,7 @@ const normalizeName = string =>
 const filterUsersBySearch = (users, searchValue) => {
    if (searchValue.lenght === 0) return users;
 
-   return users.filter(user =>
-      normalizeName(user.name).includes(normalizeName(searchValue))
-   );
+   return users.filter(user => normalizeName(user.name).includes(normalizeName(searchValue)));
 };
 
 const filterUsersByActive = (users, onlyActiveUsers) => {
@@ -27,8 +25,7 @@ const sortUsers = (users, sortBy) => {
          return users.sort((a, b) => {
             if (a.role === b.role) return 0;
             if (a.role === USER_ROLES.TEACHER) return -1;
-            if (a.role === USER_ROLES.STUDENT && b.role === USER_ROLES.OTHER)
-               return -1;
+            if (a.role === USER_ROLES.STUDENT && b.role === USER_ROLES.OTHER) return -1;
             return 1;
          });
 
@@ -74,10 +71,7 @@ const paginateUsers = (usersFiltered, pagination) => {
 export const getUsersToDisplay = (users, filters, pagination) => {
    const usersFiltered = filterUsers(users, filters);
 
-   const { paginatedUsers, totalPages } = paginateUsers(
-      usersFiltered,
-      pagination
-   );
+   const { paginatedUsers, totalPages } = paginateUsers(usersFiltered, pagination);
 
    return { paginatedUsers, totalPages };
 };
