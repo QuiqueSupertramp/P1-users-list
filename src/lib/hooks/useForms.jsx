@@ -1,4 +1,4 @@
-import USERS_FORMS from '@/lib/constants/users_forms';
+import USERS_FORMS from '@/lib/constants/usersForms';
 import { useState } from 'react';
 
 const useForms = () => {

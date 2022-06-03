@@ -1,0 +1,9 @@
+const PAGINATION = {
+   INTIAL_PAGE: 1,
+   DEFAULT_STEPS: 6,
+   SMALL_STEPS: 4,
+   MEDIUM_STEPS: 6,
+   LARGE_STEPS: 8,
+};
+
+export default PAGINATION;

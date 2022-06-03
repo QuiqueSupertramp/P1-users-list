@@ -1,11 +1,13 @@
 import { useState } from 'react';
+import PAGINATION from '../constants/pagination';
+import SELECT_OPTIONS from '../constants/selectOptions';
 
 const initialFilters = {
    searchValue: '',
    onlyActiveUsers: false,
-   sortBy: 'defecto',
-   currentPage: 1,
-   steps: 6,
+   sortBy: SELECT_OPTIONS.DEFAULT,
+   currentPage: PAGINATION.INTIAL_PAGE,
+   steps: PAGINATION.DEFAULT_STEPS,
 };
 
 const useFilters = () => {

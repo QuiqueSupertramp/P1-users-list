@@ -1,7 +1,7 @@
 import style from './UsersList.module.css';
 import useUsers from '@/lib/hooks/useUsers';
 import useFilters from '@/lib/hooks/useFilters';
-import { getUsersToDisplay } from '@/lib/helpers/getUsersToDisplay';
+import getUsersToDisplay from '@/lib/helpers/getUsersToDisplay';
 import UsersTable from './UserTable/UsersTable';
 import Pagination from './Pagination/Pagination';
 import FormWrapper from '../forms/FormWrapper';

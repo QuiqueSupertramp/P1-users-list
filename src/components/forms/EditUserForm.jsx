@@ -1,4 +1,4 @@
-import { USER_ROLES } from '@/lib/constants/roles';
+import USER_ROLES from '@/lib/constants/roles';
 import { UsersFormsContext } from '@/lib/contexts/UsersFormsContext';
 import useEditForm from '@/lib/hooks/useEditForm';
 import updateUser from '@/lib/services/updateUser';

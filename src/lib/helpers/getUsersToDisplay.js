@@ -1,5 +1,5 @@
-import { USER_ROLES } from '../constants/roles';
-import { SELECT_OPTIONS } from '../constants/selectOptions';
+import USER_ROLES from '../constants/roles';
+import SELECT_OPTIONS from '../constants/selectOptions';
 
 // Filter Functions ------------------------>
 const normalizeName = string =>
@@ -68,10 +68,12 @@ const paginateUsers = (usersFiltered, pagination) => {
 };
 
 // Users to display
-export const getUsersToDisplay = (users, filters, pagination) => {
+const getUsersToDisplay = (users, filters, pagination) => {
    const usersFiltered = filterUsers(users, filters);
 
    const { paginatedUsers, totalPages } = paginateUsers(usersFiltered, pagination);
 
    return { paginatedUsers, totalPages };
 };
+
+export default getUsersToDisplay;

@@ -3,7 +3,7 @@ import IconButton from '../Buttons/IconButton';
 import CrossIcon from '../icons/CrossIcon';
 import { useContext } from 'react';
 import { UsersFormsContext } from '@/lib/contexts/UsersFormsContext';
-import USERS_FORMS from '@/lib/constants/users_forms';
+import USERS_FORMS from '@/lib/constants/usersForms';
 import CreateUserForm from './CreateUserForm';
 import EditUserForm from './EditUserForm';
 import DeleteUserForm from './DeleteUserForm';

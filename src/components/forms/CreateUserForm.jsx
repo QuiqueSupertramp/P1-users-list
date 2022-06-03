@@ -1,7 +1,7 @@
 import style from './CreateUserForm.module.css';
 import InputText from '../Inputs/InputText';
 import Select from '../Inputs/Select';
-import { USER_ROLES } from '@/lib/constants/roles';
+import USER_ROLES from '@/lib/constants/roles';
 import Checkbox from '../Inputs/Checkbox';
 import Button from '../Buttons/Button';
 import InputTextAsync from '../Inputs/InputTextAsync';

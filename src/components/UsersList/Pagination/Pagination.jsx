@@ -1,4 +1,5 @@
 import IconButton from '@/components/Buttons/IconButton';
+import PAGINATION from '@/lib/constants/pagination';
 import NextArrow from '../../icons/NextArrow';
 import PrevArrow from '../../icons/PrevArrow';
 import Select from '../../Inputs/Select';
@@ -13,9 +14,9 @@ const Pagination = ({ totalPages, pagination, paginationSetters }) => {
       <footer className={style.footer}>
          <div className={style.steps}>
             <Select value={steps} onChange={e => setSteps(e.target.value)}>
-               <option value={4}>4</option>
-               <option value={6}>6</option>
-               <option value={8}>8</option>
+               <option value={PAGINATION.SMALL_STEPS}>{PAGINATION.SMALL_STEPS}</option>
+               <option value={PAGINATION.MEDIUM_STEPS}>{PAGINATION.MEDIUM_STEPS}</option>
+               <option value={PAGINATION.LARGE_STEPS}>{PAGINATION.LARGE_STEPS}</option>
             </Select>
             <span>usuarios por página</span>
          </div>
