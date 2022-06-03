@@ -1,9 +1,8 @@
-.userRow {
-   width: 100%;
+.userCard {
+   width: 48%;
    display: flex;
-   flex-direction: row;
-   justify-content: space-between;
-   align-items: center;
+   gap: 1rem;
+   flex-direction: column;
    padding: 0.75rem 1.5rem;
    box-shadow: var(--shadow-sm);
    border-radius: var(--rounded-md);
@@ -13,8 +12,7 @@
 .display {
    display: flex;
    flex-direction: row;
-   justify-content: center;
-   align-items: center;
+
    padding: 0px;
 }
 
@@ -42,7 +40,7 @@
    align-items: center;
    gap: 0.5rem;
    padding: 0px;
-   width: 50%;
+   width: 100%;
 }
 
 .status,
@@ -58,9 +56,9 @@
 
 .status {
    display: flex;
-   justify-content: center;
+   justify-content: flex-start;
    align-items: center;
-   padding: 0.625rem 0;
+   padding: 0.625rem;
 }
 
 .active,
@@ -96,7 +94,6 @@
 
 .role {
    display: flex;
-   justify-content: center;
    align-items: center;
    padding: 0.625rem 0;
 }

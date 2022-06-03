@@ -7,13 +7,13 @@ const ROLES_LIST = {
    [USER_ROLES.OTHER]: ['Otro', style.otro],
 };
 
-const UserRol = ({ role }) => {
-   const [rolName, rolClass] = ROLES_LIST[role];
+const UserRol = ({ role, className = '' }) => {
+   const [roleName, roleClass] = ROLES_LIST[role];
 
    return (
-      <div className={style.rol}>
-         <div className={`${style.rolContainer} ${rolClass}`}>
-            <span>{rolName}</span>
+      <div className={className}>
+         <div className={`${style.roleContainer} ${roleClass}`}>
+            <span>{roleName}</span>
          </div>
       </div>
    );

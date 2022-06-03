@@ -13,6 +13,7 @@ const UsersFilters = ({ filters, filtersSetters }) => {
 
    if (currentForm !== USERS_FORMS.FILTERS) return null;
 
+   // Destructuring props
    const { searchValue, onlyActiveUsers, sortBy } = filters;
    const { setSearchValue, setOnlyActiveUsers, setSortBy } = filtersSetters;
 

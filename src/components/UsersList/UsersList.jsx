@@ -4,9 +4,9 @@ import useFilters from '@/lib/hooks/useFilters';
 import { getUsersToDisplay } from '@/lib/helpers/getUsersToDisplay';
 import UsersTable from './UserTable/UsersTable';
 import Pagination from './Pagination/Pagination';
-import UsersFilters from './Header/UsersFilters/UsersFilters';
 import FormWrapper from '../forms/FormWrapper';
 import UsersFormsProvider from '../Providers/UsersFormsProvider';
+import UsersFilters from './UsersFilters';
 
 const UsersList = () => {
    const { users, status, reloadUsers } = useUsers();

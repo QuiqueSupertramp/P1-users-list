@@ -1,9 +1,19 @@
-.usersTable {
+.usersRows {
    width: 100%;
    display: flex;
    flex-direction: column;
    justify-content: center;
    align-items: flex-start;
+   gap: 1rem;
+   padding: 0;
+}
+
+.usersCards {
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   flex-wrap: wrap;
    gap: 1rem;
    padding: 0;
 }
