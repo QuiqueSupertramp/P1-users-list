@@ -18,6 +18,20 @@ select {
    outline: none;
 }
 
+button,
+select,
+input[type='checkbox'] {
+   cursor: pointer;
+}
+
+button:disabled {
+   cursor: default;
+}
+
+button:focus {
+   box-shadow: var(--shadow-sm);
+}
+
 h1 {
    font-size: var(--title1);
    margin: 2rem auto;
